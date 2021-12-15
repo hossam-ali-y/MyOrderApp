@@ -1,0 +1,11 @@
+.vscode
+.vs
+wwwroot/*
+!wwwroot/upload
+!wwwroot/reports
+bin
+obj
+Publish
+*.db
+*.zip
+

@@ -1,0 +1,7 @@
+.vscode
+bin
+obj
+Publish
+*.db
+*.zip
+*.csprojAssemblyReference.cache
