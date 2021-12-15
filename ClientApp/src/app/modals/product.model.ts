@@ -1,40 +1,51 @@
+import { CartItem } from "./cart-item";
+import { Category } from "./category.model";
+import { Company } from "./company.model";
+import { Picture } from "./picture.model";
+
 // Product Tag
 export type ProductTags = 'nike' | 'puma' | 'lifestyle' | 'caprese';
 
 // Product Colors
 export type ProductColor = 'white' | 'black' | 'red' | 'green' | 'purple' | 'yellow' | 'blue' | 'gray' | 'orange' | 'pink';
 
-// export interface Product {
-//   id: number;
-//   productName: string;
-//   price: number;
-//   title: string;
-//   description: string;
-//   categoryId: number | null;
-//   quantity: number;
-//   companyId: number | null;
-//   category: Category;
-//   company: Company;
-//   carts: Cart[];
-//   pictures: Picture[];
-// }
-
 export class Product {
   id?: number;
   name?: string;
   price?: number;
-  salePrice?: number;
-  discount?: number;
-  pictures?: string;
+  salePrice?: number | null;
+  discount?: number | null;
   shortDetails?: string;
   description?: string;
-  stock?: number;
-  newPro?: boolean;
+  stock?: number | null;
   brand?: string;
-  sale?: boolean;
-  category?: string;
-  tags?: ProductTags[];
-  colors?: ProductColor[];
+  sale?: boolean | null;
+  tags?: string;
+  colors?: string;
+  categoryId?: number | null;
+  companyId?: number | null;
+  category?: Category;
+  company?: Company;
+  cartItems?: CartItem[];
+  pictures?: Picture[];
+
+
+// export class Product {
+//   id?: number;
+//   name?: string;
+//   price?: number;
+//   salePrice?: number;
+//   discount?: number;
+//   pictures?: string;
+//   shortDetails?: string;
+//   description?: string;
+//   stock?: number;
+//   newPro?: boolean;
+//   brand?: string;
+//   sale?: boolean;
+//   category?: string;
+//   tags?: ProductTags[];
+//   colors?: ProductColor[];
 
   constructor(
     id?: number,
@@ -42,16 +53,16 @@ export class Product {
     price?: number,
     salePrice?: number,
     discount?: number,
-    pictures?: string,
+    pictures?: Picture[],
     shortDetails?: string,
     description?: string,
     stock?: number,
-    newPro?: boolean,
+    // newPro?: boolean,
     brand?: string,
     sale?: boolean,
-    category?: string,
-    tags?: ProductTags[],
-    colors?: ProductColor[]
+    category?: Category,
+    tags?: string,
+    colors?: string
   ) {
     this.id = id;
     this.name = name;
@@ -62,7 +73,7 @@ export class Product {
     this.shortDetails = shortDetails;
     this.description = description;
     this.stock = stock;
-    this.newPro = newPro;
+    // this.newPro = newPro;
     this.brand = brand;
     this.sale = sale;
     this.category = category;

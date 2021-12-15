@@ -1,6 +1,6 @@
 import { Product } from "./product.model";
 
-export interface Company {
+export class Company {
   id: number;
   companyName: string;
   address: string;

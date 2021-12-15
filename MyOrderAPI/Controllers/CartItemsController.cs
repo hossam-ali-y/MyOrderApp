@@ -7,53 +7,56 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DataLayer.Data;
 using DataLayer.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace MyOrderAPI.Controllers
 {
+    // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class CartsController : ControllerBase
+    [EnableCors("CorsPolicy")]
+    public class CartItemsController : ControllerBase
     {
         private readonly MyOrderDBContext _context;
 
-        public CartsController(MyOrderDBContext context)
+        public CartItemsController(MyOrderDBContext context)
         {
             _context = context;
         }
 
         // GET: api/Carts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cart>>> GetCarts()
+        public async Task<ActionResult<IEnumerable<CartItem>>> GetCartItems()
         {
-            return await _context.Carts.ToListAsync();
+            return await _context.CartItems.ToListAsync();
         }
 
-        // GET: api/Carts/5
+        // GET: api/CartItems/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Cart>> GetCart(int id)
+        public async Task<ActionResult<CartItem>> GetCartItem(int id)
         {
-            var cart = await _context.Carts.FindAsync(id);
+            var CartItem = await _context.CartItems.FindAsync(id);
 
-            if (cart == null)
+            if (CartItem == null)
             {
                 return NotFound();
             }
 
-            return cart;
+            return CartItem;
         }
 
-        // PUT: api/Carts/5
+        // PUT: api/CartItems/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCart(int id, Cart cart)
+        public async Task<IActionResult> PutCartItem(int id, CartItem CartItem)
         {
-            if (id != cart.Id)
+            if (id != CartItem.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(cart).State = EntityState.Modified;
+            _context.Entry(CartItem).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +64,7 @@ namespace MyOrderAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CartExists(id))
+                if (!CartItemExists(id))
                 {
                     return NotFound();
                 }
@@ -74,37 +77,38 @@ namespace MyOrderAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Carts
+        // POST: api/CartItems
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Cart>> PostCart(Cart cart)
+        public async Task<ActionResult<CartItem>> PostCartItem(CartItem CartItem)
         {
-            _context.Carts.Add(cart);
+            _context.CartItems.Add(CartItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCart", new { id = cart.Id }, cart);
+            return CreatedAtAction("GetCartItem", new { id = CartItem.Id }, CartItem);
         }
 
-        // DELETE: api/Carts/5
+        // DELETE: api/CartItems/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Cart>> DeleteCart(int id)
+        public async Task<ActionResult<CartItem>> DeleteCartItem(int id)
         {
-            var cart = await _context.Carts.FindAsync(id);
-            if (cart == null)
+            var CartItem = await _context.CartItems.FindAsync(id);
+            if (CartItem == null)
+            if (CartItem == null)
             {
                 return NotFound();
             }
 
-            _context.Carts.Remove(cart);
+            _context.CartItems.Remove(CartItem);
             await _context.SaveChangesAsync();
 
-            return cart;
+            return CartItem;
         }
 
-        private bool CartExists(int id)
+        private bool CartItemExists(int id)
         {
-            return _context.Carts.Any(e => e.Id == id);
+            return _context.CartItems.Any(e => e.Id == id);
         }
     }
 }

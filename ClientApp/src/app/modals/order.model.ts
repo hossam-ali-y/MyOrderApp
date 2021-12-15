@@ -1,6 +1,6 @@
-import { Cart } from "./cart-item";
+import { CartItem } from "./cart-item";
 
-export interface Order {
+export class Order {
   id: number;
   customerName: string;
   customerEmail: string;
@@ -11,5 +11,5 @@ export interface Order {
   shippedDate: string | null;
   deliveredDate: string | null;
   totalPrice: number;
-  carts: Cart[];
+  cartItems: CartItem[];
 }

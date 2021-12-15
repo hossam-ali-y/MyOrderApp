@@ -37,14 +37,18 @@ export class HomeTwoComponent implements OnInit {
     this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
     this.productService.getProducts()
     .subscribe(
-      (product: Product[]) => {
-        this.products = product;
+      (products: Product[]) => {
+        this.products = products;
+        console.log(products);
+
       }
     )
+
     this.productService.getBanners()
     .subscribe(
       data => this.banners = data
     );
+
   }
 
 

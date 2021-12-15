@@ -7,11 +7,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DataLayer.Data;
 using DataLayer.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace MyOrderAPI.Controllers
 {
+    // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("CorsPolicy")]
+
     public class ProductsController : ControllerBase
     {
         private readonly MyOrderDBContext _context;
@@ -25,7 +29,7 @@ namespace MyOrderAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Products.Include(e=>e.Pictures).Include(e=>e.Category).ToListAsync();
         }
 
         // GET: api/Products/5

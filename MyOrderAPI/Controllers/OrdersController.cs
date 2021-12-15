@@ -7,11 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DataLayer.Data;
 using DataLayer.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace MyOrderAPI.Controllers
 {
+    // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("CorsPolicy")]
     public class OrdersController : ControllerBase
     {
         private readonly MyOrderDBContext _context;

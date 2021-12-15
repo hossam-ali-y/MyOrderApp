@@ -43,7 +43,7 @@ public observer   :  Subscriber<{}>;
          let stock = this.calculateStockCounts(products[index], quantity);
          if(qty != 0 && stock) {
            products[index]['quantity'] = qty;
-           message = 'The product ' + product.name + ' has been added to cart.';
+           message = ' تم إضافة المنتج ' + product.name + ' الى السلة.';
            status = 'success';
            this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
          }
@@ -55,7 +55,7 @@ public observer   :  Subscriber<{}>;
      if(!hasItem) {
       item = { product: product, quantity: quantity };
       products.push(item);
-      message = 'The product ' + product.name + ' has been added to cart.';
+      message = ' تم إضافة المنتج '+ product.name + ' الى السلة.';
       status = 'success';
       this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
   }
@@ -72,7 +72,7 @@ public calculateStockCounts(product: CartItem, quantity): CartItem | Boolean {
   let stock = product.product.stock;
   if(stock < qty) {
     // this.toastrService.error('You can not add more items than available. In stock '+ stock +' items.');
-    this.snackBar.open('You can not choose more items than available. In stock ' + stock + ' items.', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+    this.snackBar.open('لايمكنك أختيار أكثر من الكمية المتاحة في المخزون. ' + stock + ' items.', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
     return false
   }
   return true

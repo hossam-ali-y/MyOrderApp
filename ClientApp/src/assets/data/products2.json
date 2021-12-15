@@ -14,8 +14,8 @@
       "big": "assets/images/product/small/headphone1/headphone2.png"
   },
   {
-      "small": "assets/images/product/small/headphone1/headphone3.png",
-      "big": "assets/images/product/small/headphone1/headphone3.png"
+      "small": "assets/images/product//small/headphone1/headphone3.png",
+      "big":   "assets/images/product/small/headphone1/headphone3.png"
   },
   {
     "small": "assets/images/product/small/headphone1/headphone4.png",

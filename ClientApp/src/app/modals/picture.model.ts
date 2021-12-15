@@ -1,9 +1,10 @@
 import { Product } from "./product.model";
 
-export interface Picture {
+export class Picture {
   id: number;
   productId: number;
-  picture1: string;
+  big: string;
+  small: string;
   note: string;
   product: Product;
 }
