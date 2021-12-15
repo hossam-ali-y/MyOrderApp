@@ -1,7 +1,13 @@
 {
         "folders": [
                 {
-                        "path": "."
+                        "path": "./ClientApp",
+                },
+                {
+                        "path": "./DataLayer",
+                },
+                {
+                        "path": "./MyOrderAPI",
                 }
         ]
 }

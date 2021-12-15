@@ -8,7 +8,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class AppComponent {
 
-  title = 'ecommerce-sophia-new';
+  title = 'طلباتي';
 
   constructor(private spinner: NgxSpinnerService) {}
 
@@ -20,7 +20,7 @@ export class AppComponent {
     setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
-    }, 5000);
+    }, 2000);
 
     window.scroll(0,0);
   }

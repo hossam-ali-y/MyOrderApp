@@ -4,7 +4,20 @@ export type ProductTags = 'nike' | 'puma' | 'lifestyle' | 'caprese';
 // Product Colors
 export type ProductColor = 'white' | 'black' | 'red' | 'green' | 'purple' | 'yellow' | 'blue' | 'gray' | 'orange' | 'pink';
 
-
+// export interface Product {
+//   id: number;
+//   productName: string;
+//   price: number;
+//   title: string;
+//   description: string;
+//   categoryId: number | null;
+//   quantity: number;
+//   companyId: number | null;
+//   category: Category;
+//   company: Company;
+//   carts: Cart[];
+//   pictures: Picture[];
+// }
 
 export class Product {
   id?: number;
