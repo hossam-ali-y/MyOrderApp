@@ -20,6 +20,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataLayer.Data;
+using DataLayer.Interface;
+using DataLayer.Repository;
 
 namespace MyOrderAPI
 {
@@ -35,16 +37,21 @@ namespace MyOrderAPI
                 // This method gets called by the runtime. Use this method to add services to the container.
                 public void ConfigureServices(IServiceCollection services)
                 {
+                        services.AddHttpContextAccessor();
+                        services.AddScoped<IProductRepository, ProductRepository>();
+                        services.AddScoped<IOrderRepository, OrderRepository>();
+                        services.AddScoped<ICartRepository, CartRepository>();
+
                         services.AddMvc(op => op.EnableEndpointRouting = false);
                         services.AddControllers();
 
-                        services.AddControllers(     // options =>  options.RespectBrowserAcceptHeader = true // false by default
-                                                    ).AddNewtonsoftJson(options =>
+                        // options =>  options.RespectBrowserAcceptHeader = true // false by default
+                        services.AddControllers().AddNewtonsoftJson(options =>
                                                     {
-                                                //      var reslver = options.SerializerSettings.ContractResolver;
-                                                //      if (reslver != null)
-                                                //      (reslver as DefaultContractResolver).NamingStrategy = null;
-                                        });
+                                                            //      var reslver = options.SerializerSettings.ContractResolver;
+                                                            //      if (reslver != null)
+                                                            //      (reslver as DefaultContractResolver).NamingStrategy = null;
+                                                    });
                         services.AddSwaggerGen(c =>
                         {
                                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyOrderAPI", Version = "v1" });
@@ -127,12 +134,14 @@ namespace MyOrderAPI
                         app.UseMvc(routes =>
                         {
                                 routes.MapRoute(
-            name: "default",
-            template: "{controller=Home}/{action=Index}/{id?}");
+                                 name: "default",
+                                 template: "{controller=Home}/{action=Index}/{id?}"
+                                 );
 
                                 routes.MapSpaFallbackRoute(
-            name: "spa-fallback",
-            defaults: new { controller = "Home", action = "Index" });
+                                    name: "spa-fallback",
+                                     defaults: new { controller = "Home", action = "Index" }
+                                 );
                         });
 
                         app.UseHttpsRedirection();
