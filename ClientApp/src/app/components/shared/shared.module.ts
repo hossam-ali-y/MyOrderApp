@@ -40,6 +40,8 @@ import { HeaderFourComponent } from './header-four/header-four.component';
 import { CategoriesMenuComponent } from './categories-menu/categories-menu.component';
 import { CategoriesSectionComponent } from './categories-section/categories-section.component';
 import { FooterTwoComponent } from './footer-two/footer-two.component';
+import { OrdersService } from './services/orders.service';
+import { CategoryService } from './services/category.service';
 
 
 
@@ -126,7 +128,9 @@ import { FooterTwoComponent } from './footer-two/footer-two.component';
   ],
   providers: [
     ProductService,
-    CartService
+    CartService,
+    OrdersService,
+    CategoryService
   ]
 })
 export class SharedModule {}

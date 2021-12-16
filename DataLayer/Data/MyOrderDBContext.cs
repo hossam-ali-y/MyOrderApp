@@ -35,6 +35,18 @@ namespace DataLayer.Data
                 entity.Property(e => e.UnitPrice)
                     .HasColumnType("money")
                     .HasDefaultValueSql("((0))");
+
+                entity.HasOne(d => d.Order)
+                    .WithMany(p => p.CartItems)
+                    .HasForeignKey(d => d.OrderId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_CartItems_Orders");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.CartItems)
+                    .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_CartItems_Products");
             });
 
             modelBuilder.Entity<Category>(entity =>
@@ -67,9 +79,19 @@ namespace DataLayer.Data
 
             modelBuilder.Entity<Order>(entity =>
             {
+                entity.Property(e => e.City).HasMaxLength(50);
+
+                entity.Property(e => e.Country).HasMaxLength(50);
+
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
-                entity.Property(e => e.CustomerEmail).HasMaxLength(100);
+                entity.Property(e => e.CustomerAddress).HasMaxLength(100);
+
+                entity.Property(e => e.CustomerCompanyName).HasMaxLength(100);
+
+                entity.Property(e => e.CustomerEmail).HasMaxLength(50);
+
+                entity.Property(e => e.CustomerLastName).HasMaxLength(100);
 
                 entity.Property(e => e.CustomerName)
                     .IsRequired()
@@ -82,12 +104,12 @@ namespace DataLayer.Data
                 entity.Property(e => e.ShippedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.TotalPrice).HasColumnType("money");
+
+                entity.Property(e => e.ZipCode).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Picture>(entity =>
             {
-                entity.Property(e => e.Big).IsRequired();
-
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.Pictures)
                     .HasForeignKey(d => d.ProductId)

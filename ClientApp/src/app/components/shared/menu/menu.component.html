@@ -1,15 +1,15 @@
 <mat-toolbar-row fxHide fxShow.gt-sm class="container" fxLayout="row"  fxLayout.xs="row" fxLayoutAlign="space-between center">
   <div class="main-menu" fxLayout="row" fxHide fxShow.gt-sm>
-      <a  mat-button class="mat-button" [matMenuTriggerFor]="animals">Home<mat-icon class="caret">arrow_drop_down</mat-icon></a>
+      <a  mat-button class="mat-button" [matMenuTriggerFor]="animals">الرئيسية<mat-icon class="caret">arrow_drop_down</mat-icon></a>
       <mat-menu #animals="matMenu" [overlapTrigger]="false" class="app-dropdown">
-        <a mat-menu-item [routerLink]="['/home/one']" routerLinkActive="router-link-active" >Home-1</a>
-        <a mat-menu-item [routerLink]="['/home/two']" routerLinkActive="router-link-active">Home-2</a>
-        <a mat-menu-item [routerLink]="['/home/three']" routerLinkActive="router-link-active">Home-3</a>
-        <a mat-menu-item [routerLink]="['/home/four']" routerLinkActive="router-link-active">Home-4</a>
-        <a mat-menu-item [routerLink]="['/home/five']" routerLinkActive="router-link-active">Home-5</a>
+        <a mat-menu-item [routerLink]="['/home/one']" routerLinkActive="router-link-active" >الرئيسية-1</a>
+        <a mat-menu-item [routerLink]="['/home/two']" routerLinkActive="router-link-active">الرئيسية-2</a>
+        <a mat-menu-item [routerLink]="['/home/three']" routerLinkActive="router-link-active">الرئيسية-3</a>
+        <a mat-menu-item [routerLink]="['/home/four']" routerLinkActive="router-link-active">الرئيسية-4</a>
+        <a mat-menu-item [routerLink]="['/home/five']" routerLinkActive="router-link-active">الرئيسية-5</a>
     </mat-menu>
-      <a [routerLink]="['/home/products/all']" routerLinkActive="router-link-active"  mat-button class="mat-button">Products</a>
-      <a  mat-button [matMenuTriggerFor]="shop" class="mat-button" (click)="openMegaMenu()">Shop<mat-icon class="caret">arrow_drop_down</mat-icon></a>
+      <a [routerLink]="['/home/products/all']" routerLinkActive="router-link-active"  mat-button class="mat-button">المنتجات</a>
+      <a  mat-button [matMenuTriggerFor]="shop" class="mat-button" (click)="openMegaMenu()">متجر<mat-icon class="caret">arrow_drop_down</mat-icon></a>
       <mat-menu #shop="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
           <div fxLayout="row wrap">
               <div fxFlex="25" fxLayout="column" class="p-1">
@@ -49,16 +49,16 @@
           </div>
 
       </mat-menu>
-      <a  mat-button mat-button [matMenuTriggerFor]="blog" class="mat-button">Blog<mat-icon class="caret">arrow_drop_down</mat-icon></a>
+      <a  mat-button mat-button [matMenuTriggerFor]="blog" class="mat-button">المدونة<mat-icon class="caret">arrow_drop_down</mat-icon></a>
       <mat-menu #blog="matMenu" [overlapTrigger]="false" class="app-dropdown">
           <a mat-menu-item [routerLink]="['/blog/blog-list']">Blog List</a>
           <a mat-menu-item [routerLink]="['/blog/blog-column']">Blog Columns</a>
           <a mat-menu-item [routerLink]="['/blog/blog-details']">Blog Details</a>
 
       </mat-menu>
-      <a  mat-button [matMenuTriggerFor]="pages" class="mat-button">Pages<mat-icon class="caret">arrow_drop_down</mat-icon></a>
+      <a  mat-button [matMenuTriggerFor]="pages" class="mat-button">الصفحات<mat-icon class="caret">arrow_drop_down</mat-icon></a>
       <mat-menu #pages="matMenu" [overlapTrigger]="false" class="app-dropdown">
-        <a [routerLink]="['/pages/about']" mat-menu-item>About Us</a>
+        <a [routerLink]="['/pages/about']" mat-menu-item>من نحن</a>
         <a mat-menu-item [routerLink]="['/pages/faq']" >FAQ</a>
         <a mat-menu-item [routerLink]="['/pages/contact']">Contact</a>
         <a mat-menu-item [routerLink]="['/pages/wishlist']">Wishlist</a>
@@ -68,7 +68,7 @@
         <a mat-menu-item [routerLink]="['/pages/my-account']">My Account</a>
         <a mat-menu-item [routerLink]="['/pages/error']">404</a>
     </mat-menu>
-      <a [routerLink]="['/pages/contact']" routerLinkActive="router-link-active"   mat-button class="mat-button">Contact</a>
+      <a [routerLink]="['/pages/contact']" routerLinkActive="router-link-active"   mat-button class="mat-button">تواصل معنا</a>
     </div>
     <!-- <app-shopping-widgets *ngIf="url == '/home/one'" [shoppingCartItems]="shoppingCartItems"></app-shopping-widgets> -->
     <!-- <div class="main-menu-wrapper" fxLayout="row" fxLayoutAlign="space-between center" >

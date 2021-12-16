@@ -1,16 +1,22 @@
 // Color 1 scss
-@import "scss/color2";
+@import "scss/color3";
 
 .banners-container .seccond {
   direction: ltr;
 }
+.price {
+  text-align: right;
+}
 
-.popular-products .title-header h4::after {
+.popular-products .title-header h4::after,
+.details-wrapper .products .title::after,
+.widget-title::after {
   right: 0 !important;
 }
 
-.img-fluid {
-  margin-left: 8px;
+.img-fluid,
+.media-image {
+  margin-left: 8px ;
   margin-right: 0 !important;
 }
 
@@ -18,14 +24,20 @@
   margin-left: 7px;
   margin-right: 0 !important;
 }
-
-.left-sidebar-wrapper
-  .all-products
-  .col
-  .product-item
+.product-item
   .mat-card:not([class*="mat-elevation-z"])
   .product-info-wrapper
   .icons {
   left: 10px !important;
   right: auto !important;
+}
+
+
+.main-topbar .top-bar .widget-text:not(:last-child) {
+  margin: 0 0 0 20px !important;
+}
+
+.main-topbar .top-bar .widget-text .mat-button-wrapper img {
+  margin-left: 3px;
+  margin-right: 0 !important;
 }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DataLayer.Data;
 using DataLayer.Models;
 using Microsoft.AspNetCore.Cors;
+using System.Linq.Dynamic.Core;
 
 namespace MyOrderAPI.Controllers
 {
@@ -29,7 +30,20 @@ namespace MyOrderAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return await _context.Products.Include(e=>e.Pictures).Include(e=>e.Category).ToListAsync();
+            return await _context.Products.Include(e => e.Pictures).Include(e => e.Category)
+                .AsNoTracking().ToListAsync();
+        }
+
+        // GET: api/Products
+        [HttpPost("sort")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsSorted(string[] orderBy)
+        {
+           
+            var q = _context.Products.Include(e => e.Pictures).Include(e => e.Category)
+                .AsNoTracking();
+                q = q.OrderBy(orderBy[0]);
+
+            return await q.ToListAsync();
         }
 
         // GET: api/Products/5

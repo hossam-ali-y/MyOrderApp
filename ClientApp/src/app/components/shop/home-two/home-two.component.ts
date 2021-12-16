@@ -24,11 +24,11 @@ export class HomeTwoComponent implements OnInit {
   public newArrivalsProducts: Array<Product>;
 
   public slides = [
-    { title: 'Huge sale', subtitle: 'Up to 70%', image: 'assets/images/carousel/banner1.jpg' },
-    { title: 'Biggest discount', subtitle: 'Check the promotion', image: 'assets/images/carousel/banner2.jpg' },
-    { title: 'Biggest sale', subtitle: 'Dont miss it', image: 'assets/images/carousel/banner3.jpg' },
-    { title: 'Our best products', subtitle: 'Special selection', image: 'assets/images/carousel/banner4.jpg' },
-    { title: 'Massive sale', subtitle: 'Only for today', image: 'assets/images/carousel/banner5.jpg' }
+    { title: 'مبيعات هائلة', subtitle: 'تصل الى 70%', image: 'assets/images/carousel/banner1.jpg' },
+    { title: 'أكبر خصم', subtitle: 'تحقق من الترقية', image: 'assets/images/carousel/banner2.jpg' },
+    { title: 'أكبر مبيعات', subtitle: 'لا تفوتها', image: 'assets/images/carousel/banner3.jpg' },
+    { title: 'أفضل منتجاتنا', subtitle: 'إختيار خاص', image: 'assets/images/carousel/banner4.jpg' },
+    { title: 'مبيعات ضخمة', subtitle: 'فقط لهذا اليوم', image: 'assets/images/carousel/banner5.jpg' }
   ];
 
   constructor(private productService: ProductService, private cartService: CartService) { }

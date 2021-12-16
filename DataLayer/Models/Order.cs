@@ -8,15 +8,28 @@ namespace DataLayer.Models
 {
     public partial class Order
     {
+        public Order()
+        {
+            CartItems = new HashSet<CartItem>();
+        }
+
         public int Id { get; set; }
         public string CustomerName { get; set; }
+        public string CustomerLastName { get; set; }
         public string CustomerEmail { get; set; }
         public string CustomerPhone { get; set; }
+        public string CustomerCompanyName { get; set; }
+        public string CustomerAddress { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string ZipCode { get; set; }
         public int Status { get; set; }
         public string Note { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? ShippedDate { get; set; }
         public DateTime? DeliveredDate { get; set; }
         public decimal TotalPrice { get; set; }
+
+        public virtual ICollection<CartItem> CartItems { get; set; }
     }
 }

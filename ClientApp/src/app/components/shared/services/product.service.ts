@@ -29,8 +29,14 @@ export class ProductService {
     this.compareProducts.subscribe(products => products = products)
   }
 
+
   private products(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url+'/products')
+    return this.http.get<Product[]>(this.url + '/products/')
+    // return this.http.get<Product[]>('assets/data/products2.json');
+  }
+
+  private productsSorted(orderBy): Observable<Product[]> {
+    return this.http.post<Product[]>(this.url + '/products/sort/', [orderBy])
     // return this.http.get<Product[]>('assets/data/products2.json');
   }
 
@@ -48,6 +54,11 @@ export class ProductService {
   public getProducts(): Observable<Product[]> {
     // return this.products();
     return this.products()
+  }
+
+  public getProductsSortred(val): Observable<Product[]> {
+    // return this.products();
+    return this.productsSorted(val)
   }
 
 

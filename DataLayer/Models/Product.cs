@@ -10,6 +10,7 @@ namespace DataLayer.Models
     {
         public Product()
         {
+            CartItems = new HashSet<CartItem>();
             Pictures = new HashSet<Picture>();
         }
 
@@ -30,6 +31,7 @@ namespace DataLayer.Models
 
         public virtual Category Category { get; set; }
         public virtual Company Company { get; set; }
+        public virtual ICollection<CartItem> CartItems { get; set; }
         public virtual ICollection<Picture> Pictures { get; set; }
     }
 }

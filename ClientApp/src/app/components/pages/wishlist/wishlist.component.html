@@ -4,10 +4,10 @@
 
 <div fxLayout="column" fxLayoutAlign="space-around center" *ngIf="!wishlistItems.length">
   <mat-chip-list>
-      <mat-chip color="warn" selected="true">YOU HAVE NO ITEMS IN YOUR WISHLIST.</mat-chip>
+      <mat-chip color="warn" selected="true">ليس لديك عناصر في قائمة الرغبات.</mat-chip>
   </mat-chip-list>
   <div>
-    <a [routerLink]="['/home/one']" routerLinkActive="router-link-active"   mat-raised-button color="primary" class="btn-project mt-20">Continue shopping</a>
+    <a [routerLink]="['/home/two']" routerLinkActive="router-link-active"   mat-raised-button color="primary" class="btn-project mt-20">الإستمرار في التسوق</a>
   </div>
 
 </div>
@@ -16,12 +16,12 @@
 
   <div class="mat-table cart-table">
     <div class="mat-header-row">
-      <div class="mat-header-cell">Product</div>
-      <div class="mat-header-cell">Name</div>
-      <div class="mat-header-cell">Price</div>
+      <div class="mat-header-cell">المنتج</div>
+      <div class="mat-header-cell">الإسم</div>
+      <div class="mat-header-cell">السعر</div>
       <div class="mat-header-cell text-center">
         <div class="px-1">
-          <button mat-raised-button color="warn" >Clear All</button>
+          <button mat-raised-button color="warn" >حذف الكل</button>
         </div>
       </div>
     </div>
@@ -38,12 +38,12 @@
 
     </div>
     <div class="mat-row">
-      <div class="mat-cell"><a [routerLink]="['/home/one']" routerLinkActive="router-link-active"  mat-raised-button  class="btn-project">Continue shopping</a></div>
+      <div class="mat-cell"><a [routerLink]="['/home/two']" routerLinkActive="router-link-active"  mat-raised-button  class="btn-project">الإستمرار في التسوق</a></div>
       <div class="mat-cell"></div>
       <div class="mat-cell"></div>
 
 
-      <div class="mat-cell text-center"><a [routerLink]="['/pages/checkout']" routerLinkActive="router-link-active" mat-raised-button  class="btn-project">Proceed To Checkout</a></div>
+      <div class="mat-cell text-center"><a [routerLink]="['/pages/checkout']" routerLinkActive="router-link-active" mat-raised-button  class="btn-project">الشروع في الدفع</a></div>
     </div>
   </div>
 

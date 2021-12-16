@@ -3,7 +3,7 @@
       <div class="" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
           <div class="slider-categories" fxFlex="100" fxFlex.gt-md="25" fxFlex.md="40">
               <div class="categories-wrap" >
-                  <div class="title"> أعلى التصنيفات</div>
+                  <div class="title"> التصنيفات الرئيسية</div>
                     <app-categories></app-categories>
                     <div class="btn-sale">
                         <button mat-raised-button color="primary">استخدم الخصم - 60٪ خصم</button>
@@ -64,20 +64,20 @@
             <div class="container">
                 <mat-tab-group>
 
-                    <mat-tab  label="FEATURED PRODUCTS">
+                    <mat-tab  label="المنتجات المميزة">
 
                              <app-product-carousel-two [product]="products | slice:0:5"></app-product-carousel-two>
 
 
                     </mat-tab>
 
-                    <mat-tab label="LATEST PRODUCTS">
+                    <mat-tab label="أحدث المنتجات">
 
                             <app-product-carousel-two [product]="products | slice:5:13"></app-product-carousel-two>
 
                     </mat-tab>
 
-                    <mat-tab label="ON SALE PRODUCTS">
+                    <mat-tab label="منتجات مباعة">
 
                               <app-product-carousel-two [product]="products | slice:13:22"></app-product-carousel-two>
 

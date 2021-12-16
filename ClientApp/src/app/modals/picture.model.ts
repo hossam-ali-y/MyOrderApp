@@ -6,5 +6,6 @@ export class Picture {
   big: string;
   small: string;
   note: string;
+
   product: Product;
 }

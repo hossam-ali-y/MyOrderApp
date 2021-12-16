@@ -83,6 +83,7 @@ namespace MyOrderAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order Order)
         {
+            Console.WriteLine(Order.CartItems.Count());
             _context.Orders.Add(Order);
             await _context.SaveChangesAsync();
 

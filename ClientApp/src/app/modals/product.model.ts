@@ -24,28 +24,11 @@ export class Product {
   colors?: string;
   categoryId?: number | null;
   companyId?: number | null;
+
   category?: Category;
   company?: Company;
   cartItems?: CartItem[];
   pictures?: Picture[];
-
-
-// export class Product {
-//   id?: number;
-//   name?: string;
-//   price?: number;
-//   salePrice?: number;
-//   discount?: number;
-//   pictures?: string;
-//   shortDetails?: string;
-//   description?: string;
-//   stock?: number;
-//   newPro?: boolean;
-//   brand?: string;
-//   sale?: boolean;
-//   category?: string;
-//   tags?: ProductTags[];
-//   colors?: ProductColor[];
 
   constructor(
     id?: number,
@@ -86,3 +69,21 @@ export class Product {
   export interface ColorFilter {
     color?: ProductColor;
   }
+
+  // export class Product {
+//   id?: number;
+//   name?: string;
+//   price?: number;
+//   salePrice?: number;
+//   discount?: number;
+//   pictures?: string;
+//   shortDetails?: string;
+//   description?: string;
+//   stock?: number;
+//   newPro?: boolean;
+//   brand?: string;
+//   sale?: boolean;
+//   category?: string;
+//   tags?: ProductTags[];
+//   colors?: ProductColor[];
+

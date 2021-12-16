@@ -1,25 +1,31 @@
 
-<div class="home-header-2">
-    <div class="container"fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px" fxlayoutalign="space-between center">
-      <div class="logo">
-          <a [routerLink]="['/home/one']" routerLinkActive="router-link-active" ><img src="assets/images/logo-01.png"></a>
-      </div>
-      <div fxflexoffset.gt-sm="10"  fxFlex class="search-form">
-       <form class="search-form" fxLayout="row">
-         <div class="form-wrap">
-            <input type="text" placeholder="Type to search...">
-            <button class="btn-search" type="submit">Search</button>
-         </div>
-       </form>
-      </div>
-      <div class="call-bucket-wrap" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="center center" >
+
+
+
+
+
+
+<div class="home-header">
+  <div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px" fxlayoutalign="space-between center">
+    <div class="logo">
+        <a [routerLink]="['/home/one']" routerLinkActive="router-link-active" ><img src="assets/images/logo-01.png"></a>
+    </div>
+    <div fxflexoffset.gt-sm="10"  fxFlex class="search-form">
+        <form class="search-form" fxLayout="row">
+          <div class="form-wrap">
+             <input type="text" class="text-center" placeholder="إبحث هنا ...">
+             <button class="btn-search" type="submit">إبحث</button>
+          </div>
+        </form>
+       </div>
+    <div class="call-bucket-wrap" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="center center" >
         <div class="info-message-icon"  fxLayout="row" fxLayoutAlign="center center">
           <div class="icon"  fxLayout="row" >
               <mat-icon class="mat-icon-lg mat-icon material-icons">call</mat-icon>
           </div>
             <div class="info-text">
-              <p>Helpline:</p>
-               <span>02(981)336 111</span>
+              <p>خط المساعدة:</p>
+               <span>855 982 (772)</span>
             </div>
         </div>
         <div class="main-menu-wrapper-2" fxLayout="row" fxLayoutAlign="space-between center" >
@@ -28,10 +34,13 @@
             </mat-toolbar>
           </div>
       </div>
-    </div>
+
   </div>
-  <div fxShow="false" fxShow.gt-sm class="menu-container2">
-      <app-menu></app-menu>
-  </div>
+</div>
+<div class="menu-container1">
+    <app-menu></app-menu>
+</div>
+
+
 
 

@@ -16,9 +16,10 @@ export class MainComponent implements OnInit {
 
   public sidenavMenuItems:Array<any>;
 
-  public currencies = ['USD', 'EUR'];
+  public currencies = ['USD', 'EUR','ر.ي','ر.س'];
   public currency:any;
   public flags = [
+    { name:'عربي', image: 'assets/images/flags/ye.svg' },
     { name:'English', image: 'assets/images/flags/gb.svg' },
     { name:'German', image: 'assets/images/flags/de.svg' },
     { name:'French', image: 'assets/images/flags/fr.svg' },
