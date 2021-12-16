@@ -74,7 +74,7 @@ export class CartService {
     let stock = product.product.stock;
     if (stock < qty) {
       // this.toastrService.error('You can not add more items than available. In stock '+ stock +' items.');
-      this.snackBar.open('لايمكنك أختيار أكثر من الكمية المتاحة في المخزون. ' + stock + ' items.', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+      this.snackBar.open('لايمكنك أختيار أكثر من الكمية المتاحة في المخزون. ' + stock + ' عنصر. ', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
       return false
     }
     return true

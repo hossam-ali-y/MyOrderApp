@@ -101,12 +101,12 @@ export class ProductService {
     if (this.hasProduct(product)) {
       item = products.filter(item => item.id === product.id)[0];
       const index = products.indexOf(item);
-      this.snackBar.open('The product  ' + product.name + ' already added to comparison list.', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+      this.snackBar.open(' المنتج ' + product.name + ' مضاف مسبقا في قائمة المقارنة. ', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
 
     } else {
       if (products.length < 4)
         products.push(product);
-      message = 'The product ' + product.name + ' has been added to comparison list.';
+      message = ' تمت إضافة المنتج ' + product.name + ' الى قائمة المقارنة. ';
       status = 'success';
       this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
 
@@ -124,13 +124,13 @@ export class ProductService {
   }
 
   // Get Products By category
-  public getProductByCategory(category: string): Observable<Product[]> {
+  public getProductByCategory(categoryName: string): Observable<Product[]> {
     return this.products().pipe(map(items =>
       items.filter((item: Product) => {
-        if (category == 'all')
+        if (categoryName == 'all')
           return item
         else
-          return item.category?.categoryName === category;
+          return item.category?.categoryName === categoryName;
 
       })
     ));
