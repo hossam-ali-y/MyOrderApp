@@ -10,18 +10,18 @@ import { SidebarMenuService } from '../sidebar/sidebar-menu.service';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
-  public sidenavMenuItems:Array<any>;
+  public sidenavMenuItems: Array<any>;
 
   public currencies = ['USD', 'EUR'];
-  public currency:any;
+  public currency: any;
   public flags = [
-    { name:'English', image: 'assets/images/flags/gb.svg' },
-    { name:'German', image: 'assets/images/flags/de.svg' },
-    { name:'French', image: 'assets/images/flags/fr.svg' },
-    { name:'Russian', image: 'assets/images/flags/ru.svg' },
-    { name:'Turkish', image: 'assets/images/flags/tr.svg' }
+    { name: 'English', image: 'assets/images/flags/gb.svg' },
+    { name: 'German', image: 'assets/images/flags/de.svg' },
+    { name: 'French', image: 'assets/images/flags/fr.svg' },
+    { name: 'Russian', image: 'assets/images/flags/ru.svg' },
+    { name: 'Turkish', image: 'assets/images/flags/tr.svg' }
   ]
-  public flag:any;
+  public flag: any;
 
   products: Product[];
 
@@ -29,8 +29,10 @@ export class HeaderComponent implements OnInit {
   shoppingCartItems: CartItem[] = [];
 
 
-  constructor(private cartService: CartService) {
-    this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
+  constructor(public cartService: CartService) {
+    this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems)
+    // this.cartService.cartItems.subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems)
+
   }
 
   ngOnInit() {
@@ -38,10 +40,10 @@ export class HeaderComponent implements OnInit {
     this.flag = this.flags[0];
   }
 
-  public changeCurrency(currency){
+  public changeCurrency(currency) {
     this.currency = currency;
   }
-  public changeLang(flag){
+  public changeLang(flag) {
     this.flag = flag;
   }
 

@@ -19,7 +19,7 @@ export class ShoppingWidgetsComponent implements OnInit {
 
   @Input() shoppingCartItems: CartItem[] = [];
 
-  constructor(private cartService: CartService, public productService: ProductService) { }
+  constructor(public cartService: CartService, public productService: ProductService) { }
 
   ngOnInit() {
   }
@@ -34,6 +34,10 @@ export class ShoppingWidgetsComponent implements OnInit {
 
   public getTotal(): Observable<number> {
     return this.cartService.getTotalAmount();
+  }
+
+  public getCount(): Observable<number> {
+    return this.cartService.getItemCount();
   }
 
 }

@@ -56,7 +56,9 @@ export class CheckoutComponent implements OnInit {
       this.orderService.addOrder().subscribe((res: Order) => {
         this.orderService.order = res
         // console.log(this.orderService.order);
-        localStorage.removeItem("cartItem");
+
+        this.cartService.clearCart()
+
         this.spinner.hide()
         this.snackBar.open('تم إضافة طلبك بنجاح', '×', { panelClass: ['success'], verticalPosition: 'top', duration: 5000 });
         this.router.navigate(['/pages/done']);

@@ -16,11 +16,14 @@ export class CartService {
   // Array
   public cartItems: BehaviorSubject<CartItem[]> = new BehaviorSubject([]);
   public observer: Subscriber<{}>;
+  public shoppingCartItems: CartItem[] = [];
 
   constructor(public snackBar: MatSnackBar) {
     this.cartItems.subscribe(
       products => products = products
     );
+
+    this.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems)
   }
 
   // Get Products
@@ -82,7 +85,20 @@ export class CartService {
 
 
 
+  public clearCart() {
+    products = [];
+    localStorage.setItem("cartItem", JSON.stringify(products));
 
+    this.shoppingCartItems=[]
+
+    // this.cartItems.subscribe(
+    //   products => products = products
+    // );
+    // this.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems)
+
+    // this.getItems()
+    // this.getItems().subscribe();
+  }
 
   // Removed in cart
   public removeFromCart(item: CartItem) {
@@ -92,6 +108,13 @@ export class CartService {
     localStorage.setItem("cartItem", JSON.stringify(products));
   }
 
+  public getItemCount(): Observable<number> {
+    return this.cartItems.pipe(map((product: CartItem[]) => {
+      return products.reduce((prev, curr: CartItem) => {
+        return prev + 1
+      }, 0);
+    }));
+  }
   // Total amount
   public getTotalAmount(): Observable<number> {
     return this.cartItems.pipe(map((product: CartItem[]) => {

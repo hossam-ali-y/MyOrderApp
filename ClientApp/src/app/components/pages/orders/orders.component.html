@@ -37,7 +37,7 @@
 
           <div class="mat-cell"
             [class]="order.status==0?'waiting':order.status==1?'inprogress':order.status==2?'delivered':''">
-            <mat-select [(ngModel)]="order.status" (ngModelChange)="onOrderStatusChange(order)" name="status">
+            <mat-select [(ngModel)]="order.status" (ngModelChange)="onOrderStatusChange(order)">
               <mat-option class="waiting" [value]="0">{{'في الإنتظار'}}</mat-option>
               <mat-option class="inprogress" [value]="1">{{'جاري معالجة الطلب'}}</mat-option>
               <mat-option class="delivered" [value]="2">{{'تم التسليم'}}</mat-option>

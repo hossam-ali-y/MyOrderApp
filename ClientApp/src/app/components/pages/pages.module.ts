@@ -40,6 +40,12 @@ import { OrderSendComponent } from './order-send/order-send.component';
     OrderDialogComponent,
     OrderSendComponent
 
-  ]
+  ],
+  exports: [
+    OrderDialogComponent,
+  ],
+  entryComponents:[
+   OrderDialogComponent
+  ],
 })
 export class PagesModule { }

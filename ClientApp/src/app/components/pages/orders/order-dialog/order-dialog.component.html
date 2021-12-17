@@ -35,7 +35,7 @@
             </div>
             <div *ngFor="let item of order.cartItems" class="mat-row">
               <div class="mat-cell"><img [src]="item.product.pictures[0].small"></div>
-              <div class="mat-cell"><a class="product-name">{{item.product.name}} {{'x'}} {{item.quantity}}</a></div>
+              <div class="mat-cell"><a class="product-name " >{{item.product.name}}  {{'x'}}  {{item.quantity}}   </a></div>
               <div class="mat-cell price text-center cart-quantity">{{item.product.price| number : '1.2-2'}}
               </div>
               <!-- <div class="mat-cell text-muted"> -->

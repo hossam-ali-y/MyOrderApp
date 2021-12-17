@@ -2,10 +2,12 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Order } from 'src/app/modals/order.model';
 
+
+
 @Component({
   selector: 'app-order-dialog',
   templateUrl: './order-dialog.component.html',
-  styleUrls: ['./order-dialog.component.scss']
+  styleUrls: ['./order-dialog.component.scss'],
 })
 export class OrderDialogComponent implements OnInit {
 

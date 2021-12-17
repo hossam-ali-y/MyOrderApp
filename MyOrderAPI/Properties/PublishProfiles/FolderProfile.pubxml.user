@@ -5,6 +5,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\Works\YemenSoft\MyOrderApp\MyOrderAPI\bin\Publish</_PublishTargetUrl>
-    <History>True|2021-12-17T00:30:52.1148937Z;True|2021-12-16T18:51:36.4644023+03:00;</History>
+    <History>True|2021-12-17T20:19:43.4954095Z;True|2021-12-17T23:10:11.6823129+03:00;True|2021-12-17T21:39:39.5338249+03:00;True|2021-12-17T21:38:17.2532754+03:00;False|2021-12-17T21:37:49.2038161+03:00;True|2021-12-17T21:06:29.9069641+03:00;True|2021-12-17T03:30:52.1148937+03:00;True|2021-12-16T18:51:36.4644023+03:00;</History>
   </PropertyGroup>
 </Project>
