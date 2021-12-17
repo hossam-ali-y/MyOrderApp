@@ -1,138 +1,143 @@
 <div class="container">
   <div class="checkout sec-padding">
-      <div fxLayout="row wrap" class="">
-          <div class="billing-details  pr-15" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50">
-            <div class="header-title">
-                <h2>تفاصيل الفاتورة</h2>
-            </div>
+    <div fxLayout="row wrap" class="">
+      <div class="billing-details  pr-15" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50">
+        <div class="header-title">
+          <h2>تفاصيل الفاتورة</h2>
+        </div>
 
-              <form fxLayout="row wrap" (submit)="onSubmit()">
-                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
-                      <mat-form-field class="w-100">
-                          <input matInput placeholder="الإسم الأول (مطلوب)"  #name="ngModel" ngModel name="name" required
-                          [(ngModel)]="orderService.order.customerName">
-                          <mat-error *ngIf="name.invalid">من فضلك أدخل رسالة صالحة</mat-error>
-                        </mat-form-field>
-                  </div>
-                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
-                      <mat-form-field class="w-100">
-                          <input matInput placeholder="الإسم الأخير (مطلوب)" #lastName="ngModel" ngModel name="lastName" required
-                          [(ngModel)]="orderService.order.customerLastName">
-                          <mat-error *ngIf="lastName.invalid">من فضلك أدخل رسالة صالحة</mat-error>
-                        </mat-form-field>
-                  </div>
-                  <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
-                      <mat-form-field class="w-100">
-                          <input matInput placeholder="إسم الشركة (إختياري)" #subject="ngModel" ngModel name="subject"
-                          [(ngModel)]="orderService.order.customerCompanyName">
-                        </mat-form-field>
-                  </div>
-                  <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
-                      <mat-form-field class="w-100">
-                          <input matInput placeholder="العنوان" #address="ngModel" ngModel name="address"
-                          [(ngModel)]="orderService.order.customerAddress">
-                          <mat-error *ngIf="address.invalid">من فضلك أدخل إسم صالح</mat-error>
-                        </mat-form-field>
-                  </div>
-                  <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
-                      <mat-form-field class="w-100">
-                          <input matInput placeholder="المدينة/الحي" #town="ngModel" ngModel name="town/city"
-                          [(ngModel)]="orderService.order.city">
-                          <mat-error *ngIf="town.invalid">من فضلك أدخل إسم صالح</mat-error>
-                        </mat-form-field>
-                  </div>
-                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
-                      <mat-form-field class="w-100">
-                          <input matInput placeholder="الدولة/المحافظة (مطلوب)" #state="ngModel" ngModel name="state" required
-                          [(ngModel)]="orderService.order.country">
-                          <mat-error *ngIf="state.invalid">من فضلك أدخل رسالة صالحة</mat-error>
-                        </mat-form-field>
-                  </div>
-                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+        <form fxLayout="row wrap" #ngForm="ngForm" (submit)="onSubmit(ngForm.valid)">
+          <div fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="الإسم الأول (مطلوب)" #name="ngModel" ngModel name="name" required
+                [(ngModel)]="orderService.order.customerName">
+              <mat-error *ngIf="name.invalid">من فضلك أدخل رسالة صالحة</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="الإسم الأخير (مطلوب)" #lastName="ngModel" ngModel name="lastName" required
+                [(ngModel)]="orderService.order.customerLastName">
+              <mat-error *ngIf="lastName.invalid">من فضلك أدخل رسالة صالحة</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="إسم الشركة (إختياري)" #subject="ngModel" ngModel name="subject"
+                [(ngModel)]="orderService.order.customerCompanyName">
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="العنوان" #address="ngModel" ngModel name="address"
+                [(ngModel)]="orderService.order.customerAddress">
+              <mat-error *ngIf="address.invalid">من فضلك أدخل إسم صالح</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="50" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="المدينة/الحي" #town="ngModel" ngModel name="town/city"
+                [(ngModel)]="orderService.order.city">
+              <mat-error *ngIf="town.invalid">من فضلك أدخل إسم صالح</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="الدولة/المحافظة (مطلوب)" #state="ngModel" ngModel name="state"
+                [(ngModel)]="orderService.order.country">
+              <mat-error *ngIf="state.invalid">من فضلك أدخل رسالة صالحة</mat-error>
+            </mat-form-field>
+          </div>
+          <!-- <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
                       <mat-form-field class="w-100">
                           <input matInput placeholder="Postcode / zip (required)" #postcode="ngModel" ngModel name="postcode" required
                           [(ngModel)]="orderService.order.zipCode">
                           <mat-error *ngIf="postcode.invalid">من فضلك أدخل رسالة صالحة</mat-error>
                         </mat-form-field>
-                  </div>
-                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
-                      <mat-form-field class="w-100">
-                          <input matInput placeholder="البريد الإلكتروني (مطلوب)" #email="ngModel" ngModel name="email" required
-                          [(ngModel)]="orderService.order.customerEmail">
-                          <mat-error *ngIf="email.invalid">من فضلك أدخل إيميل صالح</mat-error>
-                        </mat-form-field>
-                  </div>
-                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
-                      <mat-form-field class="w-100">
-                          <input matInput placeholder="الهاتف (مطلوب)" #phone="ngModel" ngModel name="phone" required
-                          [(ngModel)]="orderService.order.customerPhone">
-                          <mat-error *ngIf="phone.invalid">من فضلك أدخل رقم هاتف صالح</mat-error>
-                        </mat-form-field>
-                  </div>
-                  <div class="add-info">
-                    <h3>معلومات إضافية</h3>
-                    <p class="text-muted">ملاحظة الطلب (إختياري)</p>
-
-                  </div>
-                  <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
-                      <mat-form-field class="w-100">
-                          <textarea placeholder="المحتوى الأخير" matInput rows="4" ngModel name="content"
-                          [(ngModel)]="orderService.order.note"></textarea>
-                        </mat-form-field>
-                  </div>
-                  <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
-                      <button class="btn-project" mat-raised-button color="accent" type="submit" >إرسال للمراجعة</button>
-                    </div>
-                  </form>
+                  </div> -->
+          <div fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="البريد الإلكتروني (مطلوب)" #email="ngModel" ngModel name="email" required
+                [(ngModel)]="orderService.order.customerEmail">
+              <mat-error *ngIf="email.invalid">من فضلك أدخل إيميل صالح</mat-error>
+            </mat-form-field>
           </div>
-          <div class="mainOrder-wrapper pl-15" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50">
-            <div class="main-order " >
-              <div class="order-box">
-                  <div class="title-box">
-                      <div>المنتج <span class="tl-amount"> الإجمالي</span></div>
-                  </div>
-                  <ul class="price-list" *ngIf='buyProducts.length'>
-                    <li *ngFor="let item of buyProducts">
-                       {{ item.product.name }} × {{ item.quantity }}
-                      <span>
-                       {{ item.product.price * item.quantity | currency:productService?.currency:'symbol' }}
-                        </span>
-                    </li>
-                </ul>
-                <ul class="quantity" *ngIf='buyProducts.length <= 0'>
-                  <li class="empty-checkout"> لايوجد منتجات في السلة </li>
-                 </ul>
-                <ul class="total-amount">
-                  <li>
-                    Subtotal <span class="amount">{{ getTotal() | async | currency:productService?.currency:'symbol'}}</span>
-                  </li>
-                  <li *ngIf='buyProducts.length'>
-                    الشحن
-                   <div class="shipping">
-                      <div class="shopping-option">
-                        <mat-radio-group>
-                          <mat-radio-button *ngFor="let payment of payments" [value]="payment">{{payment}}</mat-radio-button>
-                        </mat-radio-group>
-                      </div>
+          <div fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="الهاتف (مطلوب)" #phone="ngModel" ngModel name="phone" required
+                [(ngModel)]="orderService.order.customerPhone">
+              <mat-error *ngIf="phone.invalid">من فضلك أدخل رقم هاتف صالح</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="add-info">
+            <h3>معلومات إضافية</h3>
+            <p class="text-muted">ملاحظة الطلب (إختياري)</p>
 
-                   </div>
-                  </li>
-              </ul>
-              <ul class="total">
-                <li>الإجمالي <span class="count">{{ getTotal() | async | currency:productService?.currency:'symbol'}}</span></li>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <textarea placeholder="المحتوى الأخير" matInput rows="4" ngModel name="content"
+                [(ngModel)]="orderService.order.note"></textarea>
+            </mat-form-field>
+          </div>
+          <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+            <button [disabled]="ngForm.invalid" class="btn-project" mat-raised-button color="accent" type="submit">إرسال
+              للمراجعة</button>
+          </div>
+        </form>
+      </div>
+      <div class="mainOrder-wrapper pl-15" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50">
+        <div class="main-order ">
+          <div class="order-box">
+            <div class="title-box">
+              <div>المنتج <span class="tl-amount"> الإجمالي</span></div>
+            </div>
+            <ul class="price-list" *ngIf='buyProducts.length'>
+              <li *ngFor="let item of buyProducts">
+                {{ item.product.name }} × {{ item.quantity }}
+                <span>
+                  {{ item.product.price * item.quantity | currency:productService?.currency:'symbol' }}
+                </span>
+              </li>
             </ul>
-            <div class="paymentFinal">
+            <ul class="quantity" *ngIf='buyProducts.length <= 0'>
+              <li class="empty-checkout"> لايوجد منتجات في السلة </li>
+            </ul>
+            <ul class="total-amount">
+              <li>
+                الاجمالي <span class="amount">{{ getTotal() | async |
+                  currency:productService?.currency:'symbol'}}</span>
+              </li>
+              <li *ngIf='buyProducts.length'>
+                الشحن
+                <div class="shipping">
+                  <div class="shopping-option">
+                    <mat-radio-group>
+                      <mat-radio-button *ngFor="let payment of payments" [value]="payment">{{payment}}
+                      </mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+
+                </div>
+              </li>
+            </ul>
+            <ul class="total">
+              <li>الإجمالي <span class="count">{{ getTotal() | async |
+                  currency:productService?.currency:'symbol'}}</span></li>
+            </ul>
+            <!-- <div class="paymentFinal">
               <mat-radio-group>
                 <mat-radio-button fxLayout="column" *ngFor="let payment of paymantWay" [value]="payment">{{payment}}</mat-radio-button>
               </mat-radio-group>
-            </div>
+            </div> -->
             <div class="order">
-              <button class="btn-project" mat-raised-button color="accent" type="submit">PLACE ORDER</button>
+              <button [disabled]="ngForm.invalid" class="btn-project" (click)="onSubmit(ngForm.valid)" mat-raised-button
+                color="accent" type="submit">تأكيد الطلب</button>
             </div>
-               </div>
           </div>
-          </div>
+        </div>
+      </div>
 
-       </div>
     </div>
+  </div>
 </div>

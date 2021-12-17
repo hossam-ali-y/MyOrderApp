@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import {Product} from "../../modals/product.model";
 import {CartItem} from "../../modals/cart-item";
 import {ProductService} from "../shared/services/product.service";
@@ -12,19 +12,21 @@ import { SidenavMenu } from '../shared/sidebar/sidebar-menu.model';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.sass']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit,AfterViewInit {
 
   public sidenavMenuItems:Array<any>;
 
-  public currencies = ['USD', 'EUR','ر.ي','ر.س'];
+  public currencies = ['USD',
+  //  'EUR','ر.ي','ر.س'
+  ];
   public currency:any;
   public flags = [
     { name:'عربي', image: 'assets/images/flags/ye.svg' },
-    { name:'English', image: 'assets/images/flags/gb.svg' },
-    { name:'German', image: 'assets/images/flags/de.svg' },
-    { name:'French', image: 'assets/images/flags/fr.svg' },
-    { name:'Russian', image: 'assets/images/flags/ru.svg' },
-    { name:'Turkish', image: 'assets/images/flags/tr.svg' }
+    // { name:'English', image: 'assets/images/flags/gb.svg' },
+    // { name:'German', image: 'assets/images/flags/de.svg' },
+    // { name:'French', image: 'assets/images/flags/fr.svg' },
+    // { name:'Russian', image: 'assets/images/flags/ru.svg' },
+    // { name:'Turkish', image: 'assets/images/flags/tr.svg' }
   ]
   public flag:any;
 
@@ -265,11 +267,14 @@ export class MainComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.url = event.url;
+        console.log(this.url);
       }
     } )
+
   }
 
   ngAfterViewInit() {
+
   }
 
   ngOnInit() {

@@ -12,8 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { FaqComponent } from './faq/faq.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { BlogModule } from '../blog/blog.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { OrdersComponent } from './orders/orders.component';
 
 
 @NgModule({
@@ -23,7 +23,6 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     ReactiveFormsModule,
     PagesRoutingModule,
     SharedModule,
-    BlogModule
   ],
   declarations: [
     CartComponent,
@@ -34,6 +33,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     MyAccountComponent,
     FaqComponent,
     AboutUsComponent,
+    OrdersComponent,
     ErrorPageComponent
 
   ]

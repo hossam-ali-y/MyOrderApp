@@ -1,6 +1,8 @@
+using DataLayer.Interface;
+
 namespace DataLayer.Repository
 {
-    public class CompanyRepository
+    public class CompanyRepository:ICompanyRepository
     {
         
     }

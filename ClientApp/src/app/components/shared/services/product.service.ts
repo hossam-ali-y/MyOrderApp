@@ -130,8 +130,7 @@ export class ProductService {
         if (categoryName == 'all')
           return item
         else
-          return item.category?.categoryName === categoryName;
-
+          return item.category?.categoryName=== categoryName;
       })
     ));
   }

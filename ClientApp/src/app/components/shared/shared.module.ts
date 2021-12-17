@@ -42,6 +42,7 @@ import { CategoriesSectionComponent } from './categories-section/categories-sect
 import { FooterTwoComponent } from './footer-two/footer-two.component';
 import { OrdersService } from './services/orders.service';
 import { CategoryService } from './services/category.service';
+import { ReplacePipe } from './pipes/replace.pipe';
 
 
 
@@ -52,6 +53,7 @@ import { CategoryService } from './services/category.service';
     MenuComponent,
     SidebarComponent,
     OrderByPipe,
+    ReplacePipe,
     BannersComponent,
     HeaderTwoComponent,
     ShoppingWidgetsComponent,
@@ -62,7 +64,8 @@ import { CategoryService } from './services/category.service';
     HeaderFourComponent,
     CategoriesMenuComponent,
     CategoriesSectionComponent,
-    FooterTwoComponent
+    FooterTwoComponent,
+    ReplacePipe
   ],
   imports: [
     CommonModule,
@@ -108,6 +111,7 @@ import { CategoryService } from './services/category.service';
     MatDividerModule,
     MatCardModule,
     OrderByPipe,
+    ReplacePipe,
     HeaderComponent,
     FooterComponent,
     MenuComponent,

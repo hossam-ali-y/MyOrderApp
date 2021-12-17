@@ -44,7 +44,7 @@ export class WishlistService {
     } else {
       products.push(product);
     }
-    message = 'The product ' + product.name + ' has been added to wishlist.';
+    message = ' تم إضافة المنتج ' + product.name + ' الى قائمة الرغبات.';
             status = 'success';
             this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
       localStorage.setItem("wishlistItem", JSON.stringify(products));

@@ -28,7 +28,7 @@ export class ProductLeftSidebarComponent implements OnInit {
   constructor(private productService: ProductService, private orderService: OrdersService, private route: ActivatedRoute) {
     this.route.params.subscribe(
       (params: Params) => {
-        const category = params['category'];
+        const category = params['category']?.replace("-", " ");
         this.productService.getProductByCategory(category).subscribe(products => {
           this.allItems = products;
           this.products = products.slice(0.8);

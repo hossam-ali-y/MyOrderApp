@@ -9,30 +9,30 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repository
 {
-    public class ProductRepository:IProductRepository
-    {
-        private readonly MyOrderDBContext _context;
-
-        public ProductRepository(MyOrderDBContext context)
+        public class ProductRepository : IProductRepository
         {
-            _context = context;
+                private readonly MyOrderDBContext _context;
+
+                public ProductRepository(MyOrderDBContext context)
+                {
+                        _context = context;
+                }
+
+                public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
+                {
+                        return await _context.Products.Include(e => e.Pictures).Include(e => e.Category)
+                        .AsNoTracking().ToListAsync();
+                }
+
+                public async Task<ActionResult<IEnumerable<Product>>> GetProductsSorted(string[] orderBy)
+                {
+
+                        var q = _context.Products.Include(e => e.Pictures).Include(e => e.Category)
+                            .AsNoTracking();
+                        q = q.OrderBy(orderBy[0]);
+
+                        return await q.ToListAsync();
+                }
+
         }
-
-        public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
-        {
-            return await _context.Products.Include(e => e.Pictures).Include(e => e.Category)
-            .AsNoTracking().ToListAsync();
-        }
-
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductsSorted(string[] orderBy)
-        {
-
-            var q = _context.Products.Include(e => e.Pictures).Include(e => e.Category)
-                .AsNoTracking();
-            q = q.OrderBy(orderBy[0]);
-
-            return await q.ToListAsync();
-        }
-
-    }
 }

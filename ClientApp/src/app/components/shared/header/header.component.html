@@ -1,43 +1,42 @@
-
-
-
-
-
-
-
 <div class="home-header">
-  <div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px" fxlayoutalign="space-between center">
+  <div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px"
+    fxlayoutalign="space-between center">
+
+
     <div class="logo">
-        <a [routerLink]="['/home/one']" routerLinkActive="router-link-active" ><img src="assets/images/logo-01.png"></a>
+      <a [routerLink]="['/home/two']" routerLinkActive="router-link-active"
+        style="color: inherit">
+        <span style="font-weight: bold;font-size: 34px;"> طلباتي</span>
+      </a>
+      <!-- <a [routerLink]="['/home/one']" routerLinkActive="router-link-active"><img src="assets/images/logo-01.png"></a> -->
     </div>
-    <div fxflexoffset.gt-sm="10"  fxFlex class="search-form">
-        <form class="search-form" fxLayout="row">
-          <div class="form-wrap">
-             <input type="text" class="text-center" placeholder="إبحث هنا ...">
-             <button class="btn-search" type="submit">إبحث</button>
-          </div>
-        </form>
-       </div>
-    <div class="call-bucket-wrap" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="center center" >
-        <div class="info-message-icon"  fxLayout="row" fxLayoutAlign="center center">
-          <div class="icon"  fxLayout="row" >
-              <mat-icon class="mat-icon-lg mat-icon material-icons">call</mat-icon>
-          </div>
-            <div class="info-text">
-              <p>خط المساعدة:</p>
-               <span>855 982 (772)</span>
-            </div>
+    <div fxflexoffset.gt-sm="10" fxFlex class="search-form">
+      <form class="search-form" fxLayout="row">
+        <div class="form-wrap">
+          <button class="btn-search" type="submit">إبحث</button>
+          <input type="text" class="text-center" placeholder="إبحث هنا ...">
         </div>
-        <div class="main-menu-wrapper-2" fxLayout="row" fxLayoutAlign="space-between center" >
-            <mat-toolbar class="top-navbar top menu">
-              <app-shopping-widgets [shoppingCartItems]="shoppingCartItems"></app-shopping-widgets>
-            </mat-toolbar>
-          </div>
+      </form>
+    </div>
+    <div class="call-bucket-wrap" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="center center">
+      <div class="info-message-icon" fxLayout="row" fxLayoutAlign="center center">
+        <div class="icon" fxLayout="row">
+          <mat-icon class="mat-icon-lg mat-icon material-icons call">call</mat-icon>
+        </div>
+        <div class="info-text">
+          <p>خط المساعدة:</p>
+          <span>855 982 (772)</span>
+        </div>
       </div>
+      <div class="main-menu-wrapper-2" fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-toolbar class="top-navbar top menu">
+          <app-shopping-widgets [shoppingCartItems]="shoppingCartItems"></app-shopping-widgets>
+        </mat-toolbar>
+      </div>
+    </div>
 
   </div>
 </div>
 <div class="menu-container1">
-    <app-menu></app-menu>
+  <app-menu></app-menu>
 </div>
-

@@ -7,7 +7,7 @@
       <mat-chip color="warn" selected="true">ليس لديك عناصر في قائمة الرغبات.</mat-chip>
   </mat-chip-list>
   <div>
-    <a [routerLink]="['/home/two']" routerLinkActive="router-link-active"   mat-raised-button color="primary" class="btn-project mt-20">الإستمرار في التسوق</a>
+    <a [routerLink]="['/home/products/all']" routerLinkActive="router-link-active"   mat-raised-button color="primary" class="btn-project mt-20">الإستمرار في التسوق</a>
   </div>
 
 </div>
@@ -28,7 +28,7 @@
     <div *ngFor="let item of wishlistItems"  class="mat-row">
       <div class="mat-cell"><img [src]="item.pictures[0].small"></div>
       <div class="mat-cell"><a  class="product-name">{{item.name}}</a></div>
-      <div class="mat-cell price">{{item.price | number : '1.2-2'}}</div>
+      <div class="mat-cell price text-center">{{item.price | number : '1.2-2'}}</div>
 
       <div class="mat-cell text-center">
         <div class="p-1">
@@ -38,12 +38,10 @@
 
     </div>
     <div class="mat-row">
-      <div class="mat-cell"><a [routerLink]="['/home/two']" routerLinkActive="router-link-active"  mat-raised-button  class="btn-project">الإستمرار في التسوق</a></div>
+      <div class="mat-cell"><a [routerLink]="['/home/products/all']" routerLinkActive="router-link-active"  mat-raised-button  class="btn-project">الإستمرار في التسوق</a></div>
       <div class="mat-cell"></div>
       <div class="mat-cell"></div>
-
-
-      <div class="mat-cell text-center"><a [routerLink]="['/pages/checkout']" routerLinkActive="router-link-active" mat-raised-button  class="btn-project">الشروع في الدفع</a></div>
+      <div class="mat-cell text-center"><a [routerLink]="['/pages/checkout']" routerLinkActive="router-link-active" mat-raised-button  class="btn-project"> إتمام الطلب</a></div>
     </div>
   </div>
 

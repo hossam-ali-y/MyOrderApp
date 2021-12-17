@@ -2,7 +2,7 @@
   <ul>
     <li><a class="no-brd" [routerLink]="['/home/products/all']">عرض الكل</a></li>
     <li *ngFor="let category of categoryService.categories">
-      <a [routerLink]="['/home/products/'+category?.categoryName]">{{category?.categoryName}}</a>
+      <a [routerLink]="['/home/products/'+category?.categoryName|replace]">{{category?.categoryName}}</a>
     </li>
     <!-- <li><a [routerLink]="['/home/products/Laptops']">Laptops</a></li>
         <li><a [routerLink]="['/home/products/Smartphones']">Smart Phones</a></li>

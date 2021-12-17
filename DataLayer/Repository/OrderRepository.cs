@@ -1,6 +1,8 @@
+using DataLayer.Interface;
+
 namespace DataLayer.Repository
 {
-    public class OrderRepository
+    public class OrderRepository:IOrderRepository
     {
         
     }

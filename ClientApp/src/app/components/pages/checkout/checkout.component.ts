@@ -18,7 +18,7 @@ export class CheckoutComponent implements OnInit {
   public buyProducts: CartItem[] = [];
 
   amount: number;
-  payments: string[] = ['إنشاء حساب?', 'Flat Rate'];
+  payments: string[] = ['إنشاء حساب?'];
   paymantWay: string[] = ['Direct Bank Transfer', 'PayPal'];
 
   constructor(private cartService: CartService, public productService: ProductService, public orderService: OrdersService,
@@ -34,8 +34,8 @@ export class CheckoutComponent implements OnInit {
     return this.cartService.getTotalAmount();
   }
 
-  onSubmit() {
-    if (!(this.orderService.order.id > 0))
+  onSubmit(ngFormValid) {
+    if (!(this.orderService.order.id > 0) && ngFormValid)
       this.addOrder()
   }
 
@@ -44,8 +44,9 @@ export class CheckoutComponent implements OnInit {
 
     this.orderService.addOrder().subscribe((res: Order) => {
       this.orderService.order = res
-      console.log(this.orderService.order);
-      this.snackBar.open('تم حفظ طلبك بنجاح', '×', { panelClass: ['success'], verticalPosition: 'top', duration: 5000 });
+      // console.log(this.orderService.order);
+      localStorage.removeItem("cartItem");
+      this.snackBar.open('تم إضافة طلبك بنجاح', '×', { panelClass: ['success'], verticalPosition: 'top', duration: 5000 });
 
     }, err => {
       console.log(err);

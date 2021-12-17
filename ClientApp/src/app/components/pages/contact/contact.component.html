@@ -3,63 +3,64 @@
   <mat-card fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start"  class="p-0">
     <div fxFlex="100"   fxFlex.gt-sm="60" class="left-info-panel">
       <div class="title">
-          <h3>Contact us</h3>
+          <h3>تواصل معنا</h3>
       </div>
 
        <ul>
          <li>
             <i class="material-icons">home </i>
             <br>
-          <h4>Address</h4>
+          <h4>العنوان</h4>
           <br>
-         <p class="text-muted">123 Main Street, Anytown, CA 12345 – USA</p>
+         <p class="text-muted" style="margin-top: 8px;">شارع الستين الغربي, صنعاء, اليمن</p>
          </li>
          <li>
             <i class="material-icons">call </i>
             <br>
-          <h4>Phone</h4>
+          <h4>هاتف</h4>
           <br>
-          <p class="text-muted">123 Main Street, Anytown, CA 12345 – USA</p>
+          <p class="text-muted" style="margin-top: 8px;">855 982 (772)   -    435 534 (01)</p>
          </li>
          <li>
             <i class="material-icons">email </i>
             <br>
-          <h4>Email</h4>
+          <h4>البريد الإلكتروني</h4>
           <br>
-          <p class=" text-muted text-muted">123 Main Street, Anytown, CA 12345 – USA</p>
+          <p class=" text-muted text-muted" style="margin-top: 8px;">hosamali.9.bh@gmail.com</p>
          </li>
        </ul>
     </div>
-    <div fxFlex="100"   fxFlex.gt-sm="60" class="contact-form">
+    <div fxFlex="100"   fxFlex.gt-sm="60" class="contact-form" style="padding-right: 100px;">
         <div class="title">
-            <h3>Contact us</h3>
+            <h3> راسلنا</h3>
         </div>
         <form fxLayout="row wrap">
           <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
               <mat-form-field class="w-100">
-                  <input matInput placeholder="Your Name (required)" #name="ngModel" ngModel name="name" required>
-                  <mat-error *ngIf="name.invalid">Please enter a valid message</mat-error>
+                <input matInput placeholder="إسمك (مطلوب)" #name="ngModel" ngModel name="name" required>
+                <mat-error *ngIf="name.invalid">من فضلك أدخل إسم سليم</mat-error>
                 </mat-form-field>
           </div>
           <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
               <mat-form-field class="w-100">
-                  <input matInput placeholder="Your Email (required)" #email="ngModel" ngModel name="email" required>
-                  <mat-error *ngIf="email.invalid">Please enter a valid message</mat-error>
+                <input matInput placeholder="بريدك الإلكتروني (مطلوب)" #email="ngModel" ngModel name="email"
+                required>
+              <mat-error *ngIf="email.invalid">من فضلك أدخل بريد صالح</mat-error>
                 </mat-form-field>
           </div>
           <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
               <mat-form-field class="w-100">
-                  <input matInput placeholder="Subject" #subject="ngModel" ngModel name="subject" required>
-                  <mat-error *ngIf="subject.invalid">Please enter a valid message</mat-error>
+                <input matInput placeholder="الموضوع" #subject="ngModel" ngModel name="subject" required>
+                <mat-error *ngIf="subject.invalid">من فضلك أدخل رسالة صالحة</mat-error>
                 </mat-form-field>
           </div>
           <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
               <mat-form-field class="w-100">
-                  <textarea placeholder="Post content" matInput rows="6" ngModel name="content" required></textarea>
+                <textarea placeholder="المحتوى الأخير" matInput rows="6" ngModel name="content"required></textarea>
                 </mat-form-field>
           </div>
           <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
-              <button class="btn-project" mat-raised-button color="accent" type="submit">Send</button>
+              <button class="btn-project" mat-raised-button color="accent" type="submit">إرسال</button>
             </div>
           </form>
     </div>

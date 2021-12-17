@@ -7,15 +7,15 @@
    <div  class="p-0">
       <div class="col-sm-12 empty-cart-cls text-center" *ngIf="!products.length">
           <img src="assets/images/backet-01.png" class="img-fluid mb-4" >
-            <h3 class="mb-5"><strong>Compare List is Empty</strong></h3>
-            <h4>Explore more shortlist some items.</h4>
+            <h3 class="mb-5"><strong>قائمة المقارنة فارغة</strong></h3>
+            <h4>اكتشف المزيد من القائمة المختصرة لبعض العناصر.</h4>
       </div>
      <div class="table-responsive" *ngIf="products.length">
         <table class="table">
 
             <thead>
             <tr class="th-compare">
-                <td>Action</td>
+                <td>الحدث</td>
                 <th class="item-row" *ngFor="let product of products">
                   <a (click)="removeItem(product)"><i class="material-icons">highlight_off</i></a>
                 </th>
@@ -24,17 +24,17 @@
             <tbody id="table-compare">
             <!-- Product Name -->
             <tr>
-                <th class="product-name">Product Name</th>
+                <th class="product-name">إسم المنتج</th>
                 <td class="grid-link__title" *ngFor="let product of products">{{product.name}}</td>
             </tr>
              <!-- Product Price -->
              <tr>
-                <th class="product-name">Product Price</th>
+                <th class="product-name">سعر المنتج</th>
                 <td class="grid-link__title" *ngFor="let product of products">{{product.price | number : '1.2-2'}}</td>
             </tr>
             <!-- Product Image -->
             <tr>
-                <th class="product-name ">Product Image</th>
+                <th class="product-name ">صورة المنتج</th>
                 <td class="item-row" *ngFor="let product of products">
                     <img [src]="product.pictures[0].small" width="185" class="featured-image">
 
@@ -42,16 +42,16 @@
             </tr>
             <!-- Product Description -->
             <tr>
-                <th class="product-name">Product Description</th>
+                <th class="product-name">وصف المنتج</th>
                 <td class="item-row" *ngFor="let product of products">
                     <p class="description-compare">{{product.shortDetails}}</p>
                 </td>
             </tr>
             <!-- Product Availability -->
             <tr>
-                <th class="product-name"> Availability </th>
+                <th class="product-name"> المخزون </th>
                 <td class="available-stock" *ngFor="let product of products">
-                    <p> Available In stock </p>
+                    <p> متاح في المخزون </p>
                 </td>
             </tr>
             </tbody>

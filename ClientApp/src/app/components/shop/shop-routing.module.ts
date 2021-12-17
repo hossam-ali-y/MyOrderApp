@@ -11,6 +11,7 @@ import { HomeFiveComponent } from './home-five/home-five.component';
 
 // Routes
 const routes: Routes = [
+  // { path: '', redirectTo:'two',pathMatch:'full' },
   { path: 'one', component: HomeComponent },
   { path: 'two', component: HomeTwoComponent },
   { path: 'three', component: HomeThreeComponent },

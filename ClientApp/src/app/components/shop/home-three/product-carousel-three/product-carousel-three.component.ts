@@ -6,7 +6,7 @@ import { WishlistService } from 'src/app/components/shared/services/wishlist.ser
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { ProductDialogComponent } from '../../products/product-dialog/product-dialog.component';
-import {  SwiperDirective } from 'ngx-swiper-wrapper';
+import { SwiperDirective } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
@@ -18,15 +18,16 @@ export class ProductCarouselThreeComponent implements OnInit {
 
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
 
- @Input('product') product: Array<Product> = [];
- public config: SwiperConfigInterface = {};
+  @Input('product') product: Array<Product> = [];
+  public config: SwiperConfigInterface = {};
 
   constructor(private cartService: CartService, private productsService: ProductService, private wishlistService: WishlistService, private dialog: MatDialog, private router: Router) { }
   // @ViewChild(SwiperDirective) directiveRef: SwiperDirective;
 
   ngOnInit() {
   }
-  ngAfterViewInit(){
+
+  ngAfterViewInit() {
     this.config = {
       observer: true,
       slidesPerView: 4,
@@ -58,32 +59,32 @@ export class ProductCarouselThreeComponent implements OnInit {
   }
 
   // Add to cart
-  public addToCart(product: Product,  quantity: number = 1) {
-    this.cartService.addToCart(product,quantity);
+  public addToCart(product: Product, quantity: number = 1) {
+    this.cartService.addToCart(product, quantity);
     console.log(product, quantity);
   }
 
   // Add to wishlist
   public addToWishlist(product: Product) {
     this.wishlistService.addToWishlist(product);
- }
+  }
 
   // Add to compare
   public addToCompare(product: Product) {
     this.productsService.addToCompare(product);
- }
+  }
 
 
-public openProductDialog(product){
-  let dialogRef = this.dialog.open(ProductDialogComponent, {
+  public openProductDialog(product) {
+    let dialogRef = this.dialog.open(ProductDialogComponent, {
       data: product,
       panelClass: 'product-dialog',
-  });
-  dialogRef.afterClosed().subscribe(product => {
-    if(product){
-      this.router.navigate(['/products', product.id, product.name]);
-    }
-  });
-}
+    });
+    dialogRef.afterClosed().subscribe(product => {
+      if (product) {
+        this.router.navigate(['/products', product.id, product.name]);
+      }
+    });
+  }
 
 }
