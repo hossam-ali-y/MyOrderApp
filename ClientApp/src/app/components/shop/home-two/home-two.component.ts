@@ -3,6 +3,7 @@ import { Product } from 'src/app/modals/product.model';
 import { CartItem } from 'src/app/modals/cart-item';
 import { ProductService } from '../../shared/services/product.service';
 import { CartService } from '../../shared/services/cart.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home-two',
@@ -31,15 +32,18 @@ export class HomeTwoComponent implements OnInit {
     { title: 'مبيعات ضخمة', subtitle: 'فقط لهذا اليوم', image: 'assets/images/carousel/banner5.jpg' }
   ];
 
-  constructor(private productService: ProductService, private cartService: CartService) { }
+  constructor(private productService: ProductService, private cartService: CartService,private spinner:NgxSpinnerService) { }
 
   ngOnInit() {
     this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
+
+    this.spinner.show()
     this.productService.getProducts()
     .subscribe(
       (products: Product[]) => {
+        this.spinner.hide()
         this.products = products;
-        console.log(products);
+        // console.log(products);
 
       }
     )

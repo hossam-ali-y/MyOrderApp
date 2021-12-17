@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DataLayer.Data;
 using DataLayer.Models;
 using Microsoft.AspNetCore.Cors;
+using DataLayer.Interface;
 
 namespace MyOrderAPI.Controllers
 {
@@ -18,24 +19,26 @@ namespace MyOrderAPI.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly MyOrderDBContext _context;
+        private readonly IOrderRepository _orederRepository;
 
-        public OrdersController(MyOrderDBContext context)
+        public OrdersController(MyOrderDBContext context,IOrderRepository orederRepository)
         {
             _context = context;
+           _orederRepository = orederRepository;
         }
 
         // GET: api/Orders
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
-            return await _context.Orders.ToListAsync();
+            return await _orederRepository.GetOrders();
         }
 
         // GET: api/Orders/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
         {
-            var Order = await _context.Orders.FindAsync(id);
+            var Order = await _orederRepository.GetOrder(id);
 
             if (Order == null)
             {
@@ -49,7 +52,7 @@ namespace MyOrderAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrder(int id, Order Order)
+        public async Task<ActionResult> PutOrder(int id, Order Order)
         {
             if (id != Order.Id)
             {
@@ -74,7 +77,9 @@ namespace MyOrderAPI.Controllers
                 }
             }
 
-            return NoContent();
+            var order = await _orederRepository.GetOrder(id);
+
+            return Ok(order);
         }
 
         // POST: api/Orders
@@ -94,13 +99,14 @@ namespace MyOrderAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Order>> DeleteOrder(int id)
         {
-            var Order = await _context.Orders.FindAsync(id);
+            var Order = await _context.Orders.Include(e=>e.CartItems).FirstOrDefaultAsync(e=>e.Id==id);
             if (Order == null)
             {
                 return NotFound();
             }
 
-            _context.Orders.Remove(Order);
+
+            _context.Orders.RemoveRange(Order);
             await _context.SaveChangesAsync();
 
             return Order;

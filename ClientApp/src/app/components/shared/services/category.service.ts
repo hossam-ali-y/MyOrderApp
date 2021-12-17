@@ -12,8 +12,13 @@ export class CategoryService {
   categories: Category[] = []
   constructor(private http: HttpClient) { }
 
+
+  public loadCategories(){
+    return this.http.get(this.url + '/categories')
+  }
+
  public getCategories() {
-    return this.http.get(this.url + '/categories').subscribe((res: Category[]) => {
+    return this.loadCategories().subscribe((res: Category[]) => {
       this.categories = res
     }, err => {
       console.log(err);

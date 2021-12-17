@@ -14,6 +14,8 @@ import { FaqComponent } from './faq/faq.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { OrdersComponent } from './orders/orders.component';
+import { OrderDialogComponent } from './orders/order-dialog/order-dialog.component';
+import { OrderSendComponent } from './order-send/order-send.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { OrdersComponent } from './orders/orders.component';
     FaqComponent,
     AboutUsComponent,
     OrdersComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    OrderDialogComponent,
+    OrderSendComponent
 
   ]
 })

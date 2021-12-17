@@ -1,0 +1,30 @@
+<div class="compare-component sec-padding">
+  <div class="container">
+    <div class="p-0">
+
+      <div fxLayout="column" fxLayoutAlign="space-around center" *ngIf="orderService.order.id>0">
+        <mat-chip-list>
+          <mat-chip class="sent-text" color="success" selected="true">
+            تم تأكيد طلبك بنجاح يرجى الإحتفاض برقم الطلب {{orderService.order.id}} لمراجعة الطلب
+          </mat-chip>
+        </mat-chip-list>
+        <div>
+          <a [routerLink]="'/home/products/all'" mat-raised-button color="primary" class="btn-project mt-20">الإستمرار
+            في التسوق</a>
+        </div>
+      </div>
+
+
+      <div fxLayout="column" fxLayoutAlign="space-around center" *ngIf="!(orderService.order.id>0)">
+        <mat-chip-list>
+          <mat-chip color="warn" selected="true">لايوجد طلب مرسل</mat-chip>
+        </mat-chip-list>
+        <div>
+          <a [routerLink]="'/home/products/all'" mat-raised-button color="primary" class="btn-project mt-20">الإستمرار
+            في التسوق</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

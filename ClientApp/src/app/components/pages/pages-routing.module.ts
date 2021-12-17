@@ -10,6 +10,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { FaqComponent } from './faq/faq.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { OrdersComponent } from './orders/orders.component';
+import { OrderSendComponent } from './order-send/order-send.component';
 
 
 
@@ -27,6 +28,8 @@ const routes: Routes = [
       { path: 'compare', component: CompareComponent },
       { path: 'my-account', component: MyAccountComponent },
       { path: 'orders', component: OrdersComponent },
+      { path: 'done', component: OrderSendComponent },
+      // { path: 'orders', component: OrdersComponent },
       { path: 'error', component: ErrorPageComponent },
     ]
   }

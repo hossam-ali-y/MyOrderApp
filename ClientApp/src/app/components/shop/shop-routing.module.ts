@@ -19,8 +19,6 @@ const routes: Routes = [
   { path: 'five', component: HomeFiveComponent },
   { path: 'products/:category', component: ProductLeftSidebarComponent },
   { path: 'product/:id', component: ProductDetailsComponent }
-
-
 ];
 
 

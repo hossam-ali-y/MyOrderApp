@@ -8,6 +8,9 @@ namespace DataLayer.Interface
         public interface IProductRepository
         {
                 Task<ActionResult<IEnumerable<Product>>> GetAllProducts();
-                Task<ActionResult<IEnumerable<Product>>> GetProductsSorted(string[] orderBy);
+        Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(int categoryId);
+
+        Task<ActionResult<IEnumerable<Product>>> GetProductsSorted(string[] orderBy);
+
         }
 }

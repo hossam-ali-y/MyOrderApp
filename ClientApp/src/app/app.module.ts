@@ -25,7 +25,6 @@ import { SharedModule } from './components/shared/shared.module';
     MainComponent
 
 
-
   ],
   imports: [
     NgxSpinnerModule,

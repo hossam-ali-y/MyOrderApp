@@ -39,7 +39,6 @@ namespace DataLayer.Data
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.CartItems)
                     .HasForeignKey(d => d.OrderId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_CartItems_Orders");
 
                 entity.HasOne(d => d.Product)

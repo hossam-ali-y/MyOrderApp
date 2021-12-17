@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class OrdersService {
 
   url = environment.url;
-  orders: Order[] = []
+  // orders: Order[] = []
 
   order: Order = {
     id: 0,
@@ -23,16 +23,20 @@ export class OrdersService {
   constructor(private http: HttpClient) { }
 
   public getOrders() {
-    return this.http.get(this.url + '/orders').subscribe((res: Order[]) => {
-      this.orders = res
-    }, err => {
-      console.log(err);
-    })
+    return this.http.get(this.url + '/orders')
   }
 
 
   public addOrder() {
     return this.http.post(this.url + '/orders', this.order)
+  }
+
+  public editOrder() {
+    return this.http.put(this.url + '/orders/' + this.order.id, this.order)
+  }
+
+  public deleteOrder(orderId: number) {
+    return this.http.delete(this.url + '/orders/' + orderId)
   }
 
 }

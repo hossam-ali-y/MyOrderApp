@@ -36,8 +36,15 @@ namespace MyOrderAPI.Controllers
                         return await _productRepository.GetAllProducts();
                 }
 
-                // GET: api/Products
-                [HttpPost("sort")]
+        // GET: api/Products/byCategory
+        [HttpGet("byCategory/{categoryId}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(int categoryId)
+        {
+            return await _productRepository.GetProductsByCategory(categoryId);
+        }
+
+        // GET: api/Products
+        [HttpPost("sort")]
                 public async Task<ActionResult<IEnumerable<Product>>> GetProductsSorted(string[] orderBy)
                 {
                         return await _productRepository.GetProductsSorted(orderBy);

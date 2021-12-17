@@ -3,6 +3,9 @@ import { ProductService } from 'src/app/components/shared/services/product.servi
 import { ActivatedRoute, Params } from '@angular/router';
 import { Product, ColorFilter } from 'src/app/modals/product.model';
 import { OrdersService } from 'src/app/components/shared/services/orders.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { CategoryService } from 'src/app/components/shared/services/category.service';
+import { Category } from 'src/app/modals/category.model';
 
 @Component({
   selector: 'app-product-left-sidebar',
@@ -25,20 +28,44 @@ export class ProductLeftSidebarComponent implements OnInit {
   public tags: any[] = [];
   public colors: any[] = [];
 
-  constructor(private productService: ProductService, private orderService: OrdersService, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private orderService: OrdersService, private route: ActivatedRoute,
+    private spinner: NgxSpinnerService, private categoryService: CategoryService) {
     this.route.params.subscribe(
       (params: Params) => {
-        const category = params['category']?.replace("-", " ");
-        this.productService.getProductByCategory(category).subscribe(products => {
-          this.allItems = products;
-          this.products = products.slice(0.8);
-          this.getTags(products)
-          this.getColors(products)
-        })
+        var category;
+        const categoryName = params['category']?.replace("-", " ");
+        if (categoryName == "all") {
+          this.getProducts(-1)
+        }
+        else {
+          if (!(this.categoryService.categories.length>0)) {
+
+            return this.categoryService.loadCategories().subscribe((res: Category[]) => {
+              category = res.find(e => e.categoryName == categoryName);
+            if (category != null)
+              this.getProducts(category.id)
+            })
+          }
+          else {
+             category = categoryService.categories.find(e => e.categoryName == categoryName);
+            if (category != null)
+              this.getProducts(category?.id)
+          }
+        }
       }
     )
   }
 
+  getProducts(categoryId) {
+    this.spinner.show()
+    this.productService.getProductByCategory(categoryId).subscribe((products: Product[]) => {
+      this.allItems = products;
+      this.products = products.slice(0.8);
+      this.getTags(products)
+      this.getColors(products)
+      this.spinner.hide()
+    })
+  }
 
 
   // Get current product tags
@@ -108,8 +135,10 @@ export class ProductLeftSidebarComponent implements OnInit {
   public onChangeSorting(val) {
     // this.sortByOrder = val;
     this.animation == 'fadeOut' ? this.fadeIn() : this.fadeOut(); // animation
+    this.spinner.show()
     return this.productService.getProductsSortred(val).subscribe(products => {
       this.allItems = products;
+      this.spinner.hide()
     })
 
   }

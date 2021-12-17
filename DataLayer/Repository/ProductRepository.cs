@@ -4,6 +4,7 @@ using DataLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 
@@ -24,7 +25,14 @@ namespace DataLayer.Repository
                         .AsNoTracking().ToListAsync();
                 }
 
-                public async Task<ActionResult<IEnumerable<Product>>> GetProductsSorted(string[] orderBy)
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(int categoryId)
+        {
+            return await _context.Products.Include(e => e.Pictures).Include(e => e.Category)
+                  .Where(e=>e.CategoryId==categoryId).AsNoTracking().ToListAsync();
+        }
+
+
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsSorted(string[] orderBy)
                 {
 
                         var q = _context.Products.Include(e => e.Pictures).Include(e => e.Category)

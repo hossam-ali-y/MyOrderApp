@@ -50,7 +50,7 @@ export class ProductService {
     return this.banners();
   }
 
-  // Get Banners
+  // Get Products
   public getProducts(): Observable<Product[]> {
     // return this.products();
     return this.products()
@@ -124,15 +124,20 @@ export class ProductService {
   }
 
   // Get Products By category
-  public getProductByCategory(categoryName: string): Observable<Product[]> {
-    return this.products().pipe(map(items =>
-      items.filter((item: Product) => {
-        if (categoryName == 'all')
-          return item
-        else
-          return item.category?.categoryName=== categoryName;
-      })
-    ));
+  public getProductByCategory(categoryId) {
+    if (categoryId > 0)
+      return this.http.get(this.url + "/products/byCategory/" + categoryId)
+    else if (categoryId == -1)
+      return this.products();
+
+    // return this.products().pipe(map(items =>
+    //   items.filter((item: Product) => {
+    //     if (categoryName == 'all')
+    //       return item
+    //     else
+    //       return item.category?.categoryName=== categoryName;
+    //   })
+    // ));
   }
 
 }

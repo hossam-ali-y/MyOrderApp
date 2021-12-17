@@ -1,3 +1,98 @@
-<p>
-  orders works!
-</p>
+<div class="container">
+  <div class="cart-wrapper sec-padding">
+    <div fxLayout="column" fxLayoutAlign="space-around center" *ngIf="!orders.length">
+      <mat-chip-list>
+        <mat-chip color="warn" selected="true">لايوجد طلبات حاليا</mat-chip>
+      </mat-chip-list>
+      <!-- <div>
+           <a [routerLink]="'/home/products/all'" mat-raised-button color="primary" class="btn-project mt-20">الإستمرار في التسوق</a>
+        </div> -->
+    </div>
+    <mat-card *ngIf="orders.length" class="p-0">
+      <div class="mat-table cart-table">
+        <div class="mat-header-row">
+          <div class="mat-header-cell" style="max-width: 50px;">م</div>
+          <div class="mat-header-cell" style="max-width: 62px;">رقم الطلب</div>
+          <div class="mat-header-cell">العميل</div>
+          <div class="mat-header-cell">إيميل</div>
+          <div class="mat-header-cell">الهاتف</div>
+          <div class="mat-header-cell">إسم الشركة</div>
+          <div class="mat-header-cell">العنوان</div>
+          <div class="mat-header-cell">حالة الطلب</div>
+          <div class="mat-header-cell">تاريخ الطلب</div>
+          <!-- <div class="mat-header-cell">ملاحظة</div> -->
+          <div class="mat-header-cell">إجمالي السعر</div>
+          <!-- <div class="mat-header-cell">uvq</div> -->
+          <div class="mat-header-cell">حدث</div>
+        </div>
+        <div *ngFor="let order of orders;let i=index" class="mat-row">
+          <!-- <div class="mat-cell"><img [src]="order.product?.pictures[0]?.small"></div> -->
+          <div class="mat-cell" style="max-width: 50px;"><a class="">{{(i+1)}}</a></div>
+          <div class="mat-cell" style="max-width: 62px;"><a class="">{{order.id}}</a></div>
+          <div class="mat-cell"><a class="product-name">{{order.customerName+" "+order.customerLastName}}</a></div>
+          <div class="mat-cell"><a class="product-name">{{order.customerEmail}}</a></div>
+          <div class="mat-cell"><a class="product-name">{{order.customerPhone}}</a></div>
+          <div class="mat-cell"><a class="product-name">{{order.companyName}}</a></div>
+          <div class="mat-cell"><a class="product-name">{{order.address}}</a></div>
+
+          <div class="mat-cell"
+            [class]="order.status==0?'waiting':order.status==1?'inprogress':order.status==2?'delivered':''">
+            <mat-select [(ngModel)]="order.status" (ngModelChange)="onOrderStatusChange(order)" name="status">
+              <mat-option class="waiting" [value]="0">{{'في الإنتظار'}}</mat-option>
+              <mat-option class="inprogress" [value]="1">{{'جاري معالجة الطلب'}}</mat-option>
+              <mat-option class="delivered" [value]="2">{{'تم التسليم'}}</mat-option>
+            </mat-select>
+          </div>
+
+          <!-- <div class="mat-cell"><a class="product-name">
+              {{order.status==0?'جاري الطلب':
+              order.status==1?'جاري معالجة الطلب'
+              :order.status==2?'تم التسليم':''}}
+            </a></div> -->
+
+          <div class="mat-cell"><a class="product-name">{{order.createdDate|date}}</a></div>
+          <!-- <div class="mat-cell"><a class="product-name">{{order.note}}</a></div> -->
+
+          <!-- <div class="mat-cell price text-center">{{order.product.price | number : '1.2-2'}}</div> -->
+          <!-- <div class="mat-cell text-muted">
+                 <div fxLayout="row" fxLayout.xs="column"  class="text-muted">
+                    <div fxLayout="row" fxLayoutAlign="center start">
+                       <button mat-icon-button matTooltip="Remove" (click)="decrement(order.product)">
+                          <mat-icon>remove</mat-icon>
+                       </button>
+                       <input type="text" name="quantity"  [(ngModel)]="order.quantity" disabled class="form-control input-number">
+                       <button mat-icon-button matTooltip="Add" (click)="increment(order.product)">
+                          <mat-icon>add</mat-icon>
+                       </button>
+                    </div> -->
+          <!-- <div *ngIf="type!='wish'">
+                       <button mat-icon-button matTooltip="Add to wishlist" (click)="addToWishList(product)"><mat-icon>favorite</mat-icon></button>
+                       <button mat-icon-button matTooltip="Add to cart" *ngIf="product?.availibilityCount > 0" (click)="addToCart(product)"><mat-icon>shopping_cart</mat-icon></button>
+                       <button mat-icon-button matTooltip="Add to compare" (click)="addToCompare(product)"><mat-icon>compare</mat-icon></button>
+                       <button *ngIf="type!='all'" mat-icon-button matTooltip="Quick view" (click)="openProductDialog(product)"><mat-icon>remove_red_eye</mat-icon></button>
+                       </div> -->
+          <!-- </div>
+              </div> -->
+          <div class="mat-cell total">{{order.totalPrice | number : '1.2-2' }}</div>
+          <div class="mat-cell text-center">
+            <div class="p-1 "  style="display: flex;justify-content: space-around;">
+              <mat-icon class="" (click)="openProductDialog(order)">remove_red_eye</mat-icon>
+              <mat-icon  (click)=" deleteOrder(order)">close</mat-icon>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="mat-row">
+              <div class="mat-cell"><a  mat-raised-button  class="btn-project" [routerLink]="['/home/products/all']" routerLinkActive="router-link-active" >إستمرار التسوق</a></div>
+              <div class="mat-cell"></div>
+              <div class="mat-cell"></div>
+              <div class="mat-cell text-right">
+                 <div fxLayout="column" fxLayoutAlign="center end" class="grand-total px-2">
+                    <span class="new-price">المجموع الإجمالي: {{getTotal()  | async | currency:productsService?.currency:'symbol'}}</span>
+                 </div>
+              </div>
+              <div class="mat-cell text-center"><a mat-raised-button  class="btn-project" [routerLink]="['/pages/checkout']" routerLinkActive="router-link-active" >التقدم للدفع</a></div>
+           </div> -->
+      </div>
+    </mat-card>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { CartService } from 'src/app/components/shared/services/cart.service';
 import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
 import { element } from 'protractor';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -36,15 +37,21 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
   index: number;
   bigProductImageIndex = 0;
 
-  constructor(private route: ActivatedRoute, public productsService: ProductService, public dialog: MatDialog, private router: Router, private cartService: CartService) {
+  constructor(private route: ActivatedRoute, public productsService: ProductService, public dialog: MatDialog, private router: Router,
+    private cartService: CartService, private spinner: NgxSpinnerService) {
     this.route.params.subscribe(params => {
       const id = +params['id'];
       const el = document.getElementById('topNav');
-      el.scrollIntoView(true);
-
+      // el.scrollIntoView(true);
+      window.scroll(10, 300);
+      spinner.show()
       this.productsService.getProduct(id).subscribe(product => {
         this.product = product
+        setTimeout(() => {
+          spinner.hide()
+        }, 300);
       })
+
     });
   }
 
@@ -95,6 +102,7 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(product => {
       if (product) {
+        // console.log(product);
         this.router.navigate(['/products', product.id, product.name]);
       }
     });

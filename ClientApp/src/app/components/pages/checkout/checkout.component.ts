@@ -6,6 +6,8 @@ import { ProductService } from '../../shared/services/product.service';
 import { OrdersService } from '../../shared/services/orders.service';
 import { Order } from 'src/app/modals/order.model';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-checkout',
@@ -22,11 +24,12 @@ export class CheckoutComponent implements OnInit {
   paymantWay: string[] = ['Direct Bank Transfer', 'PayPal'];
 
   constructor(private cartService: CartService, public productService: ProductService, public orderService: OrdersService,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar, private router: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.cartItems = this.cartService.getItems();
     this.cartItems.subscribe(products => this.buyProducts = products);
+
     this.getTotal().subscribe(amount => this.amount = amount);
   }
 
@@ -35,21 +38,32 @@ export class CheckoutComponent implements OnInit {
   }
 
   onSubmit(ngFormValid) {
+    this.cartItems.subscribe(products => this.buyProducts = products);
+
     if (!(this.orderService.order.id > 0) && ngFormValid)
       this.addOrder()
   }
 
   addOrder() {
-    this.toOrder()
+    this.cartItems.subscribe(cartItems => {
+      if (!(cartItems.length > 0)) {
+        this.snackBar.open('لايوجد طلبات في السلة', '×', { panelClass: ['error'], verticalPosition: 'top', duration: 3000 });
+        return;
+      }
 
-    this.orderService.addOrder().subscribe((res: Order) => {
-      this.orderService.order = res
-      // console.log(this.orderService.order);
-      localStorage.removeItem("cartItem");
-      this.snackBar.open('تم إضافة طلبك بنجاح', '×', { panelClass: ['success'], verticalPosition: 'top', duration: 5000 });
-
-    }, err => {
-      console.log(err);
+      this.toOrder()
+      this.spinner.show()
+      this.orderService.addOrder().subscribe((res: Order) => {
+        this.orderService.order = res
+        // console.log(this.orderService.order);
+        localStorage.removeItem("cartItem");
+        this.spinner.hide()
+        this.snackBar.open('تم إضافة طلبك بنجاح', '×', { panelClass: ['success'], verticalPosition: 'top', duration: 5000 });
+        this.router.navigate(['/pages/done']);
+      }, err => {
+        this.spinner.hide()
+        console.log(err);
+      })
     })
   }
 
@@ -59,7 +73,7 @@ export class CheckoutComponent implements OnInit {
     this.getTotal().subscribe(amount => this.orderService.order.totalPrice = amount);
 
     this.cartItems.subscribe(cartItems => {
-      console.log(cartItems);
+      // console.log(cartItems);
 
       cartItems.forEach(cartItem => {
         this.orderService.order.cartItems.push({

@@ -1,0 +1,80 @@
+<div class="product-dialog">
+
+  <div class="close-btn-outer">
+    <button mat-mini-fab color="warn" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+
+    <div class="container">
+      <div class="cart-wrapper sec-padding">
+        <div fxLayout="column" fxLayoutAlign="space-around center" *ngIf="!order.cartItems.length">
+          <mat-chip-list>
+            <mat-chip color="warn" selected="true">.الطلب فاغ!! لايوجد منتجات في الطلب</mat-chip>
+          </mat-chip-list>
+          <!-- <div>
+               <a [routerLink]="'/home/products/all'" mat-raised-button color="primary" class="btn-project mt-20">الإستمرار في التسوق</a>
+            </div> -->
+        </div>
+
+        <div class="mb-15">
+          <span class="text-muted fw-500">ملاحظة: </span>
+          {{order.note}}
+        </div>
+
+        <mat-card *ngIf="order.cartItems.length" class="p-0">
+          <div class="mat-table cart-table">
+            <div class="mat-header-row">
+              <div class="mat-header-cell">المنتج</div>
+              <div class="mat-header-cell">الإسم</div>
+              <div class="mat-header-cell">السعر</div>
+              <!-- <div class="mat-header-cell">الكمية</div> -->
+              <div class="mat-header-cell">الإجمالي</div>
+              <!-- <div class="mat-header-cell">حذف</div> -->
+            </div>
+            <div *ngFor="let item of order.cartItems" class="mat-row">
+              <div class="mat-cell"><img [src]="item.product.pictures[0].small"></div>
+              <div class="mat-cell"><a class="product-name">{{item.product.name}} {{'x'}} {{item.quantity}}</a></div>
+              <div class="mat-cell price text-center cart-quantity">{{item.product.price| number : '1.2-2'}}
+              </div>
+              <!-- <div class="mat-cell text-muted"> -->
+              <!-- <div fxLayout="row" fxLayout.xs="column"  class="text-muted"> -->
+              <!-- <div fxLayout="row" fxLayoutAlign="center start"> -->
+              <!-- <button mat-icon-button matTooltip="Remove" (click)="decrement(item.product)">
+                              <mat-icon>remove</mat-icon>
+                           </button> -->
+              <!-- <input type="text" name="quantity"  [(ngModel)]="item.quantity" disabled class="form-control input-number"> -->
+              <!-- <button mat-icon-button matTooltip="Add" (click)="increment(item.product)">
+                              <mat-icon>add</mat-icon>
+                           </button> -->
+              <!-- </div> -->
+              <!-- </div> -->
+              <!-- </div> -->
+              <div class="mat-cell total">{{item.product.price * item.quantity | number : '1.2-2' }}</div>
+              <!-- <div class="mat-cell text-center">
+                     <div class="p-1">
+                        <mat-icon (click)="removeItem(item)">close</mat-icon>
+                     </div>
+                  </div> -->
+            </div>
+            <!-- <div class="mat-row">
+                  <div class="mat-cell"><a  mat-raised-button  class="btn-project" [routerLink]="['/home/products/all']" routerLinkActive="router-link-active" >إستمرار التسوق</a></div>
+                  <div class="mat-cell"></div>
+                  <div class="mat-cell"></div>
+                  <div class="mat-cell text-right">
+                     <div fxLayout="column" fxLayoutAlign="center end" class="grand-total px-2">
+                        <span class="new-price">المجموع الإجمالي: {{getTotal()  | async | currency:productsService?.currency:'symbol'}}</span>
+                     </div>
+                  </div>
+                  <div class="mat-cell text-center"><a mat-raised-button  class="btn-project" [routerLink]="['/pages/checkout']" routerLinkActive="router-link-active" >التقدم للدفع</a></div>
+               </div> -->
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
