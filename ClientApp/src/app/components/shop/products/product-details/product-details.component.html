@@ -54,7 +54,7 @@
               </h4>
               <h3 class="price" *ngIf="!productsService?.catalogMode">{{product.price |
                 currency:productsService?.currency:'symbol'}}</h3>
-              <p class="text-muted description">{{product.description}}</p>
+              <p class="text-muted description">{{product.shortDetails}}</p>
             </div>
             <div class="py-1 mt-15">
               <p>
@@ -90,17 +90,17 @@
       <div class="review-wrapper" fxFlex="100" fxFlex.md="75">
         <mat-card>
           <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
-            <mat-tab label="Description">
+            <mat-tab label="الوصف">
               <div class="full-desc lh">
-                <p class="text-muted">{{product.description}}</p>
+                <p class="text-muted">{{product.shortDetails}}</p>
               </div>
             </mat-tab>
-            <mat-tab label="Details">
+            <mat-tab label="التفاصيل">
               <div class="full-desc lh text-muted">
-                <p>{{product.shortDetails}}</p>
+                <p>{{product.description}}</p>
               </div>
             </mat-tab>
-            <mat-tab label="Reviews">
+            <mat-tab label="التقييم">
               <div class="full-desc lh">
                 <div class="writte-reviews mt-40">
                   <h3 class="mt-2">قيد التطوير</h3>

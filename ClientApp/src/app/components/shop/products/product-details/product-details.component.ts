@@ -42,8 +42,8 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
     this.route.params.subscribe(params => {
       const id = +params['id'];
       const el = document.getElementById('topNav');
-      // el.scrollIntoView(true);
-      window.scroll(10, 300);
+      el.scrollIntoView(true);
+      // window.scroll(10, 300);
       spinner.show()
       this.productsService.getProduct(id).subscribe(product => {
         this.product = product

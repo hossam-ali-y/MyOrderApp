@@ -132,8 +132,6 @@ namespace DataLayer.Data
                     .HasColumnType("money")
                     .HasDefaultValueSql("((0))");
 
-                entity.Property(e => e.ShortDetails).HasMaxLength(250);
-
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.CategoryId)
